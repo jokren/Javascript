@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        *{ padding:0; margin:0; list-style:none; border:0; }
+        .all{
+            width:500px;
+            height:200px;
+            padding:7px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            position:relative;
+        }
+        .screen{
+            width:500px;
+            height:200px;
+            overflow:hidden;
+            position:relative;
+        }
+        .screen li{ width:500px; height:200px; overflow:hidden; float:left; }
+        .screen ul{ position:absolute; left:0; top:0px; width:3000px; }
+        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center; }
+        .all ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer; }
+        .all ol li.current{ background:yellow; }
+    </style>
+    <!--
+       //1.js如何处理缓存,就在js的路径后面加上 一个参数 (时间戳)
+      // 2.页面进制使用 缓存 <meta http-equiv="Cache-Control" content="no-cache">
+      // 3.浏览器这个软件设置 禁用缓存
+    -->
+    <script src="js/useker.animate.js?v=2.2"></script>
+</head>
+
+<body>
+<div class="all" id='all'>
+    <div class="screen">
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+
+        </ul>
+    </div>
+    <ol>
+
+    </ol>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+    var oAll = document.getElementById('all');
+    var oUl = oAll.children[0].children[0];
+
+    var oOl = oAll.children[1];
+
+    //1.把第一张克隆放到最后一张
+    oUl.appendChild(oUl.children[0].cloneNode(true));
+
+    //2.遍历 创建ol里面的li(点)
+    for(var i = 0; i < oUl.children.length - 1; i++){
+        var newLI = document.createElement("li");
+        var oTxt = document.createTextNode(i + 1);
+        newLI.appendChild(oTxt);
+        if(i == 0){
+            newLI.className = "current";
+        }
+
+        oOl.appendChild(newLI);
+        newLI.tmpIndex=i;
+        newLI.addEventListener("click", function(){
+          // 三国统一
+             imgIndex=dianIndex=this.tmpIndex-1;
+            autoPlay();
+
+        })
+    }
+
+    //3.自动轮播
+    var imgIndex = 0;
+
+    var dianIndex = 0;
+
+    //第一张,我们根本不需要看到,页面加载的时候,看到第一张,
+    //以后再也不用看到第一张,以后我们看到的所谓的第一张,其实就是第6张
+    function autoPlay(){
+
+        imgIndex++;
+        if(imgIndex > 5){
+            imgIndex = 1;//轮启动启动之后,以后就从第2张开始
+            oUl.style.left = "0px";
+        }
+
+        animate(oUl, -500 * imgIndex);
+
+        //让点与轮播同步
+        dianIndex++;
+        if(dianIndex == 5){
+            dianIndex = 0;
+        }
+
+        for(var i = 0; i < oOl.children.length; i++){
+
+            if(i == dianIndex){
+                oOl.children[i].className = "current";
+            } else {
+                oOl.children[i].className = "";
+            }
+        }
+
+
+    }
+
+
+    var timer = setInterval(function(){
+
+        autoPlay();
+    }, 1000)
+
+
+    // 鼠标移入暂停
+    //    oAll.onmouseenter() // 遇到了子元素 不会触发
+    //    oAll.onmouseover()  // 遇到了子元素 会再次触发这个事件
+
+
+    oAll.onmouseenter = function(){
+        clearInterval(timer)
+    }
+    //
+    //鼠标移除 开启自动轮播
+    oAll.onmouseleave = function(){
+
+        timer = setInterval(function(){
+
+            autoPlay();
+        }, 1000)
+
+    }
+
+</script>
