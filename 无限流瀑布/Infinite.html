@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流效果动态加载</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            margin: 0 auto;
+            height:1000px;
+        }
+
+        #content > ul {
+            width: 240px;
+            padding: 4px;
+            border: 1px solid blue;
+            float: left;
+            list-style-type: none;
+        }
+
+        #content > ul > li {
+            background-color: yellow;
+            font-size: 100px;
+            color: white;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+<div id="content">
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+    <ul></ul>
+</div>
+</body>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+    //随机[m,n]之间的整数
+    function randomNumber(m, n) {
+        return Math.floor(Math.random() * (n - m + 1) + m);
+    }
+    //随机颜色
+    function randomColor() {
+        return "rgb(" + randomNumber(0, 255) + "," + randomNumber(0, 255) + "," + randomNumber(0, 255) + ")";
+    }
+    //获取当前的scrollTop
+    var scrollTopDistance;
+    //获取所有的ul
+    var uls = document.getElementsByTagName("ul");
+    var i = 0;
+    var k = i;
+    function waterFall(){
+        for (i = k;i < k + 4;i++) {
+            //创建li
+            var li = document.createElement("li");
+            //随机颜色
+            li.style.backgroundColor = randomColor();
+            //随机高度
+            li.style.height = randomNumber(150, 500) + "px";
+            //手动转换为字符串
+            li.innerHTML = i + 1 + "";
+            //插入到对应的ul中
+            //判断哪个ul的高度低，该次创建的li就插入到此ul中
+            var index = 0; //记录下标
+            for (var j = 0; j < uls.length; j++) {
+                if (uls[j].offsetHeight < uls[index].offsetHeight) {
+                    index = j;
+                }
+            }
+            //将元素节点插入文档中
+            uls[index].appendChild(li);
+        }
+        k = i;
+        return uls[index].offsetHeight;
+    }
+    waterFall();
+    //无限加载瀑布流方法，核心思想就是
+      document.onscroll=function(){
+        //文档的高度 - 文档的可视高度 <= 鼠标的滑动距离顶部的高   即滚动到底部时开始加载图片
+        if($(document).scrollTop()>=$(document).height()-$(window).height()){
+
+            waterFall();
+        }
+      }
+</script>
+</html>
