@@ -4,6 +4,8 @@
 ## 页面演示2
 [带有定时器的轮播图](https://jokren.github.io/Javascript/带有定时器的轮播图/简单焦点图%20js.html)
 
+## 页面演示3
+[无限瀑布流](https://jokren.github.io/Javascript/无限流瀑布/Infinite.html)
 
 
 
