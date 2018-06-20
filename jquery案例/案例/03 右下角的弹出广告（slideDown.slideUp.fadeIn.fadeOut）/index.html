@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    .ad {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      width: 230px;
+      height: 120px;
+      background-image: url(imgs/ad.jpg);
+        background-size:cover;
+      display: none;
+    }
+    
+    .ad span {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 40px;
+      height: 18px;
+      background-image: url(imgs/h.jpg);
+      cursor: pointer;
+    }
+  </style>
+  <script src="../../jquery-3.3.1.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".ad")
+        .slideDown("normal")
+        .slideUp("slow")
+        .fadeIn(1000)
+        .children("span").click(function() {
+          $(this).parent().fadeOut();
+        });
+    });
+  </script>
+</head>
+
+<body>
+  <div class="ani">我是内容</div>
+  <div class="ad">
+    <span></span>
+  </div>
+</body>
+
+</html>

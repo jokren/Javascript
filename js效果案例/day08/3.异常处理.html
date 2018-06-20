@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <button id="btn">我是按钮1</button>
+  <button id="btn2">清除缓存</button>
+</body>
+</html>
+<script>
+
+  try{
+      var  obtn=document.getElementById('bn');
+      obtn.onclick=function(){
+          alert("我是按钮1");
+      }
+  } catch(e) {
+      console.log(e.message);
+  }finally{
+      console.log("不管出不出异常,我都会执行...")
+  }
+
+
+      var btn2=document.getElementById('btn2')
+    btn2.onclick=function(){
+        alert("缓存已清除")
+    }
+
+</script>

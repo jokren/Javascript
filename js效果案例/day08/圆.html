@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body{
+            height:100%;
+            width:100%;
+            background-color:#000000;
+            overflow:hidden;
+        }
+        .movediv{
+            height:5px;
+            width:5px;
+            position:absolute;
+            bottom:0;
+        }
+    </style>
+    <script src="useker.animate3.js"></script>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+
+    /*
+    *
+        var x=100 + Math.sin(2*Math.PI / 360 *(jiaodu*i)) * 50;
+        var y=100 + Math.cos(2*Math.PI / 360*(jiaodu*i)) * 50;
+    *
+    * */
+
+    //
+
+    document.body.onclick = function(evt){
+        var e = evt || window.event;
+        //鼠标点击的坐标点
+        var disX = e.clientX;
+        var disy = e.clientY;
+
+        //3.点击的时候,才创建div
+        var tmpDIV = moveToDIV(disX);
+
+        animate(tmpDIV, {"top" : disy}, function(o){
+            o.remove();
+            var angle = 20;
+            var r = 50 + Math.random() * 50
+            for(var i = 0; i < 18; i++){
+
+                var x = Math.sin(2 * Math.PI / 360 * (angle * i)) * r;
+                var y = Math.cos(2 * Math.PI / 360 * (angle * i)) * r;
+
+                //创建的div都叠加在 鼠标点击的那个一个点
+                var bBOX = BoomDIV(disX, disy);
+                animate(bBOX, {left : disX + x, top : disy + y})
+            }
+        })
+
+    }
+
+    //1.创建随机的颜色
+
+    function randomColor(){
+
+        var arr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "B", "C", "D", "E", "F"];
+
+        var str = "#";
+        for(var i = 0; i < 6; i++){
+            str += arr[parseInt(Math.random() * 16)];
+        }
+        return str;
+
+    }
+
+    //2.创建从底下冒出来的 那一个div
+
+    function moveToDIV(x){
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        div.className = "movediv";
+        div.style.left = x + "px";
+        div.style.backgroundColor = randomColor();
+        return div;
+    }
+
+
+    // 4.顶一个爆炸div们
+
+    function BoomDIV(x, y){
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        div.className = "movediv";
+        div.style.left = x + "px";
+        div.style.top = y + "px";
+        div.style.backgroundColor = randomColor();
+
+        setTimeout(function(){
+            div.remove();
+        }, 500)
+        return div;
+    }
+</script>

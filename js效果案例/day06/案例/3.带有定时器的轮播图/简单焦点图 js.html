@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        *{ padding:0; margin:0; list-style:none; border:0; }
+        .all{
+            width:500px;
+            height:200px;
+            padding:7px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            position:relative;
+        }
+        .screen{
+            width:500px;
+            height:200px;
+            overflow:hidden;
+            position:relative;
+        }
+        .screen li{ width:500px; height:200px; overflow:hidden; float:left; }
+        .screen ul{ position:absolute; left:0; top:0px; width:3000px; }
+        .all ol{ position:absolute; right:10px; bottom:10px; line-height:20px; text-align:center; }
+        .all ol li{ float:left; width:20px; height:20px; background:#fff; border:1px solid #ccc; margin-left:10px; cursor:pointer; }
+        .all ol li.current{ background:yellow; }
+    </style>
+    <script src="../useker.animate.js"></script>
+</head>
+
+<body>
+<div class="all" id='all'>
+    <div class="screen">
+        <ul>
+            <li><img src="images/1.jpg" width="500" height="200"/></li>
+            <li><img src="images/2.jpg" width="500" height="200"/></li>
+            <li><img src="images/3.jpg" width="500" height="200"/></li>
+            <li><img src="images/4.jpg" width="500" height="200"/></li>
+            <li><img src="images/5.jpg" width="500" height="200"/></li>
+
+        </ul>
+    </div>
+    <ol></ol>
+</div>
+</body>
+</html>
+
+
+<script type="text/javascript">
+
+
+    var oAll = document.getElementById('all');
+
+    var oUl = oAll.children[0].children[0];
+    var oOl = oAll.children[1];
+
+    //1 动态的创建点,先做克隆   因为要做无缝轮播 --最后一张 要跟第一张一样  并给oul关联
+    oUl.appendChild(oUl.children[0].cloneNode(true));
+
+    //2.创建小点点
+    //因为克隆了一张,也就多了一个点,所以-1
+    for(var i = 0; i < oUl.children.length - 1; i++){
+
+        var newli = document.createElement("li");
+        newli.index = i;
+        newli.innerText = (i + 1);
+        oOl.appendChild(newli);
+        if(i == 0){
+            newli.className = "current";
+        }
+        newli.onclick = function(){
+            // 三国统一
+            imgIndex = dianIndex = this.index - 1;
+            autoPlay();
+        }
+    }
+
+    //3. 先完成自动播放
+
+    var imgIndex = 0;
+    var dianIndex = 0;
+
+    function autoPlay(){
+        //动态图轮播
+        imgIndex++;
+        if(imgIndex > 5){
+            imgIndex = 1;
+            oUl.style.left = "0px";
+        }
+        animate(oUl, -500 * imgIndex);
+        //控制点的为位置
+
+        //点轮播
+        dianIndex++;
+        if(dianIndex == 5){
+            dianIndex = 0;
+        }
+        for(var i = 0; i < oOl.children.length; i++){
+            oOl.children[i].className = "";
+        }
+        oOl.children[dianIndex].className = "current";
+    }
+
+    //自动播放
+    var timer = setInterval(function(){
+        autoPlay();
+    }, 1000);
+
+    // 暂停
+    oAll.onmouseenter = function(){
+        clearInterval(timer);
+    }
+    //开始播放
+    oAll.onmouseleave = function(){
+        timer = setInterval(function(){
+            autoPlay();
+        }, 1000);
+    }
+
+</script>

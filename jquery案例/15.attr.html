@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<button>点击</button>
+<img alt="" src="123.jpg">
+<input type="checkbox">
+</body>
+</html>
+<script>
+/*    getAttribute();
+      setAttribute();
+      removeAttribute();
+      Attributes();
+
+     */
+
+$(function(){
+    // attr(参数)  获取
+    // attr(参数1,参数2) 获取
+    // removeAttr("属性名称") 移除指定的属性.
+
+    $("button").click(function(){
+//        $("img").attr("src","123.jpg").attr("title","这是一个女的");
+//
+//
+//        console.log($("img").attr("title"));
+
+
+//        $("img").attr("src","")
+
+//        $("img").removeAttr("src")
+
+//        $("input:checkbox").attr("checked","checked")
+
+        console.log($("input:checkbox").attr("checked"));// 不行!!!要使用 prop("checked")
+    })
+
+})
+
+
+
+</script>

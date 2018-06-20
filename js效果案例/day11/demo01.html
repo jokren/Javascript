@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background: #333;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+
+    </div>
+</body>
+
+</html>
+<script>
+    'use strict';
+
+
+    box.onclick=()=>{
+        console.log(this.handleClick("1"));
+    }
+
+    //盒子对象的构造函数添加私有属性
+    // var GetBox=(_id) => {
+    //     this.oBox = document.getElementById(_id);
+    // }
+//    function GetBox(_id){
+//        this.oBox = document.getElementById(_id);
+//    }
+//    //盒子对象原型添加共有方法
+//    GetBox.prototype = {
+//
+//        constructor: GetBox,
+//        moveStart: function(){
+//
+//           {
+//
+//
+//                var self=this;
+//                console.log(self);
+//                this.oBox.onmousedown =(evt)=> {
+//                    var e = evt || window.event;
+//                    //获取当前位置
+//                    var x = e.offsetX;
+//                    var y = e.offsetY;
+//                    // console.log(x,y);
+//
+//                    self.moveIng(x, y);
+//                    self.moveEnd();
+//                }
+//            }
+//
+//
+//        },
+//        moveIng: (x,y)=>{
+//            var self = this;
+//            document.onmousemove = (evt)=> {
+//                var e = evt || window.event
+//                console.log(e.clientX,e.clientY);
+//
+//                //移动后的位置
+//                self.oBox.style.left = e.clientX - x + "px";
+//                self.oBox.style.top = e.clientY - y + "px";
+//                console.log(self.oBox);
+//
+//            }
+//        },
+//        moveEnd: ()=>{
+//            document.onmouseup = ()=> {
+//                //清空移动和松开事件
+//                document.onmousemove = document.onmouseup = null;
+//            }
+//        }
+//    }
+//    //实例化对象
+//    var moveBox = new GetBox("box");
+////     console.dir(moveBox);
+//
+//    moveBox.moveStart();
+
+</script>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 面向对象的三大 特性  封装 多态 继承
+    //delete 可以删除属性,方法
+    //1.创建对象的方式有几种
+    // 1.1
+    /*    var obj = {};
+        obj.name = "刘德华";
+        obj.sayHi = function(){
+
+        }
+
+        obj["age"] = 20;
+        console.log(obj);
+        delete(obj.sayHi);
+        console.log(obj.sayHi);  // undefined
+        console.log(obj);*/
+
+    //1.2
+    var obj = new Object();
+
+    //1.3 构造函数
+
+    //    function Person(_name, _age){
+    //        this.name = _name;
+    //        this.age = _age;
+    //        this.sayHi = function(){
+    //            return "你好"
+    //        }
+    //    }
+    //
+    //    var p=new Person("纠结伦",39);
+    //
+    //    delete(p.age) // 删除 对象的某一个属性
+    //
+    //    console.log(p.age); // undefined
+    //
+    //    console.log(p);
+    //
+    //    var p2=new Person("蔡依林",36);
+    //
+    //    console.log(p2.age);
+    //
+    //    console.log(p == p2);
+
+
+    function Person(_name, _age){
+        this.name = _name;
+        this.age = _age;
+        this.sayHi = function(){
+            return "你好"
+        }
+    }
+
+
+    function Cat(_name, _age){
+        this.name = _name;
+        this.age = _age;
+    }
+
+    var p = new Person("刘德华", 50); // p 是 person的实例对象
+
+
+    var c = new Cat("加菲猫", 4);   // c 是cat 实例对象
+
+
+    /*
+
+        // 用于判断 某一个对象 是否 某一个构造函数的实例 使用 instanceof
+        // 用于判断 数据的 基本类型  typeof
+
+        var num=10;
+        console.log(typeof(num));
+
+        console.log(p instanceof(Person))
+    */
+
+
+</script>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<input type="button" value="往父窗口写入内容" id="btn_parent">
+<input type="text" id="childVal"/>
+</body>
+</html>
+<script>
+
+    //  opener 指的就是父窗口对象
+    //子窗口往父窗口写入内容
+
+    document.getElementById('btn_parent').onclick = function(){
+
+        window.opener.document.getElementById("parent_val").value = "往父窗写入哈哈哈..."
+    }
+
+
+</script>

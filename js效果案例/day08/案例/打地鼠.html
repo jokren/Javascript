@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        table, tr, td{
+            border:1px solid #000;
+        }
+        table{
+            height:600px;
+            width:600px;
+        }
+        .sp{
+            height:100%;
+            width:100%;
+            background-color:yellow;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<button id="start">开始游戏</button>
+
+<table cellspacing="0" cellpadding="0">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+
+
+</table>
+</body>
+</html>
+
+<script>
+    var tds = document.querySelectorAll("tr td");
+    var count = 0; //次数
+    var zhongCount = 0;
+    for(var i = 0; i < tds.length; i++){
+        tds[i].setAttribute("id", "td" + i);
+        tds[i].onclick = function(){
+            count++;
+            if(this.children.length > 0){
+                zhongCount++;
+                this.innerHTML = "";
+            }
+        }
+    }
+    // 随机生成老鼠
+    setInterval(function(){
+        console.log("点击次数:" + count)
+        console.log("命中率:" + (zhongCount / count) * 100)
+        var oSpan = document.createElement("span")
+        oSpan.className = "sp";
+        var num = parseInt(Math.random() * 25);
+        var otd = document.getElementById('td' + (num));//小格子
+        if(otd.children.length == 0){
+            otd.appendChild(oSpan)
+            setTimeout(function(){
+                this.innerHTML = "";
+            }.bind(otd), 3000)
+        }
+    }, 1000)
+
+
+</script>

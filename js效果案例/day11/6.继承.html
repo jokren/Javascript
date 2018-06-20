@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    /*
+    *
+     *Person.call(this,mname,mage);// 对象的冒充 (copy)
+     Person.apply(this,arguments)
+
+     对象冒充只能实现 私有的属性与方法的继承,但是共有属性与方法,
+     没有实现继承
+
+      对象冒充+原型继承
+
+    *
+    * */
+
+
+    function Person(_name, _age){
+
+        this.name = _name;
+        this.age = _age;
+    }
+    Person.prototype.eat=function(str){
+        console.log("我是一个人,我能吃"+str);
+    }
+
+
+
+    //程序猿也是人
+    function Employee(mname, mage){
+
+        //       Person.call(this,mname,mage);// 对象的冒充 (copy)
+        //        Person.apply(this,arguments)
+        Person.apply(this, [mname, mage])
+    }
+
+    //    var e=new Employee("刘德华",30);
+    //
+    //    e.eat("翔")
+
+
+    var e2 = new Employee("尹文奎", 21);
+    e2.eat("肉")
+
+</script>

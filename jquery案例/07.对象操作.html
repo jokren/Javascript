@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.3.1.js"></script>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:black;
+        }
+    </style>
+</head>
+<body>
+
+
+<div></div>
+
+
+<button id="btn1">创建元素</button>
+
+
+
+<span></span>
+
+
+
+</body>
+</html>
+
+ <script>
+
+
+     $(function(){
+         $("#btn1").click(function(){
+
+//           var $newDIV=$("<div>我是文本节点</div>");
+////             $("body").append($newDIV)
+//
+//             $newDIV.appendTo($("body"))
+
+             $("div").appendTo("span")
+
+
+
+
+
+         })
+
+
+
+     })
+     
+
+ </script>

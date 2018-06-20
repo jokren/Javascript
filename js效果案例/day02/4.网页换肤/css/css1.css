@@ -1,0 +1,14 @@
+
+
+div{
+height:300px;
+width:500px;
+border:1px solid #000;
+margin: 0 auto;
+background-color:pink;
+}
+html,body{
+height:100%;
+width:100%;
+background-color:yellow;
+}

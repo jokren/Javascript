@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:150px;
+            width:150px;
+            background-color:#f66;
+            position:absolute;
+        }
+        div:nth-child(1){
+            background-color:yellowgreen;
+            left:300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+</body>
+</html>
+
+<script>
+    //  采用原型实现拖拽功能
+
+    var dragBox = {}; //字面量表达式要添加 原型方法,需要通过指针
+
+
+//    dragBox.__proto__ = {
+//        constructor : Object,
+//        ele : null,
+//        init : function(id){
+//            this.ele = document.getElementById(id);
+//            return this;
+//        },
+//        moveStart : function(){
+//            var self = this;
+//            this.ele.onmousedown = function(evt){
+//                var e = evt || window.event;
+//                var disX = e.offsetX;
+//                var disY = e.offsetY;
+//
+//                //开始移动
+//                self.moveIng(disX, disY);
+//                self.moveEnd();
+//            }
+//
+//
+//        },
+//        moveIng : function(disx, disy){
+//            var self = this;
+//            document.onmousemove = function(evt){
+//                var e = evt || window.event;
+//                self.ele.style.left = e.clientX - disx + "px";
+//                self.ele.style.top = e.clientY - disy + "px";
+//            }
+//        },
+//        //松开
+//        moveEnd : function(){
+//            document.onmouseup = function(){
+//                document.onmousemove = document.onmouseup = null;
+//            }
+//
+//        }
+//
+//    }
+//
+//
+//    dragBox.init("box").moveStart();
+
+
+</script>

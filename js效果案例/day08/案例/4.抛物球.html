@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            overflow:hidden;
+        }
+        #box{
+            height:50px;
+            width:50px;
+            background-color:red;
+            position:absolute;
+            left:100px;
+            top:250px;
+            border-radius:100%;
+        }
+    </style>
+</head>
+<body>
+        <div id="box"></div>
+</body>
+</html>
+
+<script>
+        var oBox=document.getElementById('box');
+
+         var speedY=20;
+         setInterval(function(){
+             speedY++;
+             console.log(oBox.offsetTop + speedY);
+             oBox.style.top=oBox.offsetTop+speedY+"px";
+
+             oBox.style.left=oBox.offsetLeft+5+"px";
+
+         },1000)
+
+</script>

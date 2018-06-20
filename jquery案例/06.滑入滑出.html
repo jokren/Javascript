@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{ height:300px;
+            width:300px;
+            background-color:#000000;
+        }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<input  id="slidedown" type="button" value="滑入" >
+<input  id="slideUp"  type="button"  value="滑出">
+
+<input id="slideToggle"  type="button"  value="滑入滑出">
+<div></div>
+</body>
+</html>
+
+<script>
+    $(function(){
+
+        $("#slidedown").click(function(){
+            $("div").slideDown(1000);
+        })
+
+        $("#slideUp").click(function(){
+            $("div").slideUp(1000);
+        })
+
+        $("#slideToggle").click(function(){
+            $("div").slideToggle(1000);
+        })
+
+    })
+</script>

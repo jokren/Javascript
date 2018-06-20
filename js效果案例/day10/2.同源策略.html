@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    // 一 同源策略
+    // 为了数据的安全,ajax只能做 容许同一处的资源(数据),相互访问.
+    // 同:就是三同  协议 域名 端口
+    //1. 协议 http https
+    //2. 域名
+    //3. 端口 80 8080 ...
+    // 二 跨域  CORS
+    //1. 3者有一个不同,就需要跨域. (二级域名也需要跨域)
+
+    // 为了安全,ajax 不用跨域,但是跨域
+    //2.1.在后台服务器 设置允许跨域  Access-Control-Allow-Origin:*
+    //2.2.使用 非官方定义 jsonp
+
+    // No 'Access-Control-Allow-Origin' header is present on the requested resource. Origin
+    // 后台需要加上一句   Access-Control-Allow-Origin:"*"
+
+
+</script>

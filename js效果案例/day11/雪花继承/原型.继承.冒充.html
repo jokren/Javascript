@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        html, body{
+            height:100%;
+            width:100%;
+            overflow:hidden;
+            background:url("images/bg.jpg") no-repeat 100%;
+            background-size:100% 100%;
+        }
+        .snow{
+            background:url("images/snow.gif");
+            width:20px;
+            height:20px;
+            position:absolute;
+            background-size:cover;
+            left:100px;
+            top:100px;
+        }
+        .fireworm{
+            background:url("images/1.jpg");
+            background-size:cover;
+            width:20px;
+            height:20px;
+            position:absolute;
+            left:200px;
+            top:200px;
+        }
+    </style>
+</head>
+<script src="Useker.animate.js"></script>
+<body>
+
+
+<!--<div class="snow"></div>-->
+<!--<div class="fireworm"></div>-->
+
+</body>
+</html>
+
+<script>
+    //1。 雪花也是飞Snow  fly
+    //2.  萤火虫也是飞 Fireworm fly
+    //3. 每一个 雪花   萤火 都是一个div
+
+    // 雪花与萤火虫的共同点有哪一些?
+    // 都能飞 fly 方法
+    // 有要有DOM对象  属性中包着 对象(DOM)
+    // 都是图片,要有图片的路径 属性
+    // 都要初始化 init 方法
+    // 都要有位置,雪花的位置是在 最顶上,萤火虫的位置随机
+    //  大小 属性
+
+    function Base(_width, _height, flag){
+        this.ele = document.createElement("div");//创建一个div
+        document.body.appendChild(this.ele);//添加到body
+        this.ele.style.width = _width + "px";
+        this.ele.style.height = _height + "px";
+
+        this.ele.style.position = "absolute";
+        this.ele.style.backgroundSize = "100%";
+
+        this.ele.style.left = this.randomPosition().left + "px";
+        if(flag == true){
+            //因为雪花不要 随机的 top值,如果不是雪花,
+            // 那么它就是 萤火虫,而萤火虫需要随机位置
+            this.ele.style.top = this.randomPosition().top + "px";
+        }
+
+        this.init = function(imgPath){
+            this.ele.style.backgroundImage = "url(" + imgPath + ")";
+            return this;
+        }
+    }
+    //生成随机位置的方法
+    Base.prototype.randomPosition = function(){
+        return {
+            "left" : parseInt(Math.random() * document.body.clientWidth),
+            "top" : parseInt(Math.random() * document.body.clientHeight)
+        }
+    }
+
+    Base.prototype.fly = function(){
+
+        var self = this;
+        //定义一个 萤火虫
+        slowAnimate.animate(this.ele, this.randomPosition(), function(){
+            self.fly();
+        })
+    }
+    //
+    //
+    //萤火虫 // flag =true 萤火虫 ,false 雪花
+    function Fireworm(_width, _height, _flag){
+        Base.apply(this, arguments)
+    }
+
+    Fireworm.prototype = new Base();
+    // 雪花
+    function Snow(_width, _height, _flag){
+        Base.apply(this, arguments);
+    }
+
+    Snow.prototype = new Base();
+    //我们的雪花 它从上往下飞,base里面的方法,不满足 雪花飞
+    // 重写
+    Snow.prototype.fly = function(){
+        UniformAnimate.animate(this.ele, {"top" : document.body.clientHeight}, function(ele){
+            //雪花落地,消失
+            ele.remove();
+        })
+    }
+
+    //false 表示 雪花的位置
+    for(var i = 0; i < 40; i++){
+        new Fireworm(20, 20, true).init("images/1.jpg").fly();
+    }
+
+    setInterval(function(){
+        new Snow(20, 20, false).init("images/snow.gif").fly();
+
+    }, 600)
+
+</script>

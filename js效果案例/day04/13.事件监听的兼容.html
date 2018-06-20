@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // 在IE8与IE8以下 对象不支持“addEventListener”属性或方法
+//    document.body.addEventListener("click",myClick);
+//    function myClick(){
+//        alert("嘿嘿...")
+//    }
+
+
+    //ie版的事件监听
+    //  对象不支持“attachEvent”属性或方法 ,ie11 google,火狐 不支持
+
+//    document.attachEvent("onclick",myClick)
+//    function myClick(){
+//        alert("嘻嘻...")
+//    }
+//
+////ie 8以前只支持冒泡
+//    document.detachEvent("onclick",myClick)
+//        function myClick(){
+//            alert("嘻嘻...")
+//        }
+//
+        
+        
+        //自己定义一个兼容写法
+    
+    function addEvent(dom,type,fn,flag){
+        if(dom.addEventListener){
+            dom.addEventListener(type,fn,flag);
+        }else{
+            // ie 8
+            dom.attachEvent("on"+type,fn);
+
+        }
+        
+    }
+
+
+
+    addEvent(document,"click",myClick)
+
+function myClick(){
+    alert("自己的addEvent")
+}
+    
+        
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:500px;
+            width:100%;
+        }
+        div:nth-child(odd){
+            background-color:#0094ff;
+        }
+        div:nth-child(even){
+            background-color:deeppink;
+        }
+        span{
+            height:100px;
+            width:100px;
+            display:block;
+            float:right;
+            background-color:yellowgreen;
+        }
+    </style>
+
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<div></div>
+<span id="moveTop">回到顶部</span>
+</body>
+</html>
+<script>
+    var obtn = document.getElementById('moveTop');
+    obtn.onclick = function(){
+        var timer = setInterval(function(){
+            // 目标位置0
+            var target = 0;
+            //当前的位置
+            var current = MyScoll().top;
+            // 步长=(目标位置-当前的位置)/10
+            var step = (0 - current) / 10;
+
+            //如果大于向上取整,小于就向下取整
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            // 新的位置 =当前的位置+步长
+            // 新的位置=current+step
+            //让滚动条移动到指定的 位置 (x,y)
+            window.scrollTo(0, current + step);
+
+            //当前的位置等于0就说明到家了
+            if(current == 0){
+                clearInterval(timer);
+            }
+
+        },100)
+    }
+
+    function MyScoll(){
+        if(window.pageYOffset != null){
+            return {
+                "top" : window.pageYOffset,
+                "left" : window.pageXOffset
+            }
+        }
+        //先判断 文档声明头 DTD
+        if(document.compatMode == "CSS1compat"){
+
+            return {
+                "top" : document.documentElement.scrollTop,
+                "left" : document.documentElement.scrollLeft
+            }
+        }
+        return {
+            "top" : document.body.scrollTop,
+            "left" : document.body.scrollLeft
+        }
+    }
+
+</script>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //    uname="123";
+
+    // 声明严格模式
+    //1.什么变量,必须加关键字
+    //2.let 块级作用的声明
+    //3.const 一旦声明就不能修改,常量声明 变量名称一定大写!
+    //4.可以使用 ES5-bind来改变函数内部 this的指向
+    //5. forEach(function(元素,index,arr){})  是没有返回结果的
+    //6. map(function(元素,index,arr){}); 有返回值,默认返回一个 数组
+
+    //7. includes()   判断某 字符串 是否存在,如果存在 返回 true,则 false
+    //8. repeat(n)  让某一段字符串重复 指定次数
+
+    //9. startsWith 、endsWith  (了解) 指定的字符是否在 指定位置.
+
+    // 10. Array.of(11, 22, 33, 44) 可以瞬间把参数转成 数组
+
+    // 11. find(function(){})  返回找到的元素
+
+    // 12. findIndex(function(){}) 返回的是找到元素的下标
+
+    //13. for of
+    //  for(var [key,val] of Object.entries(obj)){
+    //     console.log(key, val);
+    // }
+
+    // keys
+    //  for(var  key of Object.keys(obj)){
+    //     console.log(key);
+    // }
+
+    // values
+
+    //      for(var  val of Object.values(obj)){
+    //         console.log(val);
+    //     }
+
+    //14. Array.from("abc") //[a,b,c]  一个参数,返回数组
+
+    //  Array.from(arr,fn); 遍历元素的作用 map
+
+    // 15.字符串模板
+    //var uname="周杰伦";
+    // var str=`${uname},你好`; // "周杰伦,你好"
+
+
+    //16.箭头函数
+
+    // var fn=(a,b)=>{return a+b}
+
+
+    //    "use strict"
+    //
+    /*    //   var uname="123";
+        //    console.log(uname)
+
+        //2.let 块级作用的声明
+
+        //let uname="123";
+        //
+        //
+        //    for(let i=0;i<10;i++){
+        //        console.log(i);
+        //    }
+        //console.log(i); //i is not defined
+
+
+        //    const UNAME="周杰伦";
+        //
+        //    UNAME="刘德华"
+        //    console.log(UNAME);
+
+        //
+        //    function show(){
+        //        console.log(this);
+        //    }
+        //
+        //    show()
+
+        // 不允许在非函数的代码块内声明函数
+
+
+        /!*    for(var i=0;i<10;i++){
+                function show(){
+                    console.log(111);
+                }
+                show()
+            }*!/
+
+
+
+        // ES5-bind
+
+        //    var obj={
+        //        uname:"123"
+        //    }
+        //
+        //
+        //
+        //    setTimeout(function(){
+        //        console.log(this);
+        //    }.bind(obj),500)
+
+
+        //    var arr=[11,22,33,44,55];
+        //
+        //     var sum=0;
+        //    console.log(arr.forEach(function(ele, index, arr){
+        //        sum += ele
+        //
+        //        return sum
+        //    }));
+
+        var arr = [11, 22, 33, 44, 55];
+
+        //pre 拿上一次变量的返回结果 第一次就拿 第0次的值,因为从1开始
+        // current 当前的元素
+        //index  默认从1开始
+        // arr  自身的数组
+
+    //    var result = arr.reduce(function(pre, current, index, arr){
+    //        console.log("a1:" + pre, "current:" + current, "index:" + index, "a4:" + arr);
+    //
+    //        return pre + current;
+    //    });
+    //
+    //    console.log(result);
+
+
+        //    console.log(arr.map(function(ele, index, arr){
+        //        console.log(ele, index, arr);
+        //
+        //        return ele+10
+        //    }));
+
+        // filter 过滤
+
+        //    var arr=[11,22,33,44,55,66,77,88,99];
+        //
+        //    var  result=arr.filter(function(ele, index, arr){
+        //
+        //            if(ele>55){
+        //                return ele
+        //            }
+        //    });
+        //
+        //    console.log(result);
+
+        //
+        //    var  arr=["周杰伦","刘德华","肖华","刘奇文","刘万","尹文奎"];
+        //
+        //    var  str=prompt("请输入要查找的名")
+        //
+        //    var result=arr.filter(function(ele,index){
+        //          if(ele.indexOf(str)!=-1){
+        //              return ele;
+        //          }
+        //    })
+        //    console.log(result);
+
+
+        //    for(let i=0;i<10;i++){
+        //         // 9
+        //        console.log(i);
+        //    }
+
+        // 常量,不变量,声明之后,不能修改.
+
+        //    const PI=3.1415926;
+
+
+        //     const COOLMAN="老罗";
+
+        // 返回布尔值，表示是否找到了参数字符串
+
+    //    var str="abc123";
+    //    console.log(str.includes("123"));*/
+    /*   var str="shuaige is luo";
+       console.log(str.repeat(10));*/
+
+    /*
+        var str = "abc1234567890";
+        console.log(str.startsWith("0"));
+
+        console.log(str.endsWith("01"));
+    */
+
+
+    //var uname='尹文奎';
+    //
+    //var str=`${uname},很帅`;
+    //
+    //
+    //
+    //  var no="不"
+    //  var str="今天天气很"+no +"好";
+    //
+    // //  {{no}} 小胡子语法
+    //  var str=`今天天气很${no}好`;
+    //
+    //    console.log(str);
+
+
+    //    var arr=[11,22,33];
+
+    //与 forEach,map 都可以遍历  Array.from
+    //Array.from(arr, function(ele, index, arr){
+    //        console.log(ele, index);
+    //
+    //        return ele;
+    //    });
+
+    // 瞬间把几个参数 转成数组
+
+    //    console.log(Array.of(11, 22, 33, 44)); //[11,22,33,44]
+    //
+    //
+    //
+    //    function show(){
+    //        console.log(arguments);
+    //    }
+    //
+    //    show(11,22,33,44)
+
+
+    //find()和findIndex()
+
+
+    //    var arr=[11,22,33,44];
+    //    console.log(arr.find(function(ele, index, arr){
+    //                if(ele==22){
+    //                    return index;
+    //                }
+    //    }));
+    //
+    //
+    //    console.log(arr.findIndex(function(ele, index){
+    //        if(ele == 22){
+    //            return index;
+    //        }
+    //    }));
+
+
+    // for-of
+
+
+    /*  var obj = {
+          uname : "邵33",
+          age : 19,
+          address : "永州"
+      }
+      // entries
+      //entities
+
+      // 使用 for of  values keys entries
+
+      for(var [key, val] of Object.entries(obj)){
+          console.log(key, val);
+      }*/
+
+    //  函数默认参数
+
+
+    function show(name = "周杰伦"){
+        console.log(name);
+    }
+
+    show();
+
+    // 对称元素
+
+    var [x, y] = [10, 20]; //x=10, y=20;
+
+
+    [x, y] = [y, x];
+    console.log(x, y);//  x=20,y=10
+
+
+    //    console.log(y);
+    //
+    //
+    //    function fn1([x,y]){
+    //        console.log(x, y);
+    //    }
+    //
+    //    fn1([100,200]);
+
+    //箭头函数    lambda  语法糖
+
+    //    function fn3(){
+    //        return 10+20;
+    //    }
+    //
+    //    var fn4=()=>{return 10+20}
+    //
+    //    console.log(fn4());
+
+
+    //    setTimeout(function(){
+    //        alert("你好");
+    //    })
+    //
+    //
+    //    setTimeout(()=>alert("你好1"))
+
+
+    function sum(num1, num2){
+        return num1 + num2;
+    }
+
+    // 没有返回结果,并且 只有一句话的情况,可以不加 大括号
+
+    //     var sum1=(n1,n2)=>{return n1+n2};
+    //    console.log(sum1(3, 4));
+
+    // 需要返回一个 对象
+    //     function setObj(uname){
+    //        var obj={};
+    //        obj.name=uname;
+    //         return obj;
+    //     }
+    //
+    //     var setObj1=(uname)=>{
+    //         var obj={};
+    //         obj.name=uname;
+    //          return obj;
+    //     }
+
+
+    //    需要返回一个 空对象
+    //    function setObj(uname){
+    //
+    //        return {};
+    //    }
+    //
+    //    var setObj2=(uname)=>({Aname:uname});
+    //
+    //    console.log(setObj2("刘德华"));
+    //
+    //    var sum = (a, b) => a+b;
+    //
+    //
+    //    var fn = () =>5
+    //
+
+
+    //    var str = "abc";
+    //    console.log(str.split(""));
+    //
+    //    console.log(Array.from(str)); //把字符串转数组
+    //
+    //
+    //    var arr = [11, 22, 33, 44];
+    //    Array.from(arr, function(ele, index){
+    //        console.log(ele);
+    //    })
+
+
+//    var uname = "周杰伦";
+//
+//    var obj = {uname} // {uname:"周杰伦"}
+
+    //      var  obj={
+    //        sayHi:function(){
+    //
+    //        }
+    //      }
+
+
+//    var obj = {
+//        sayHi(param){
+//            alert(param)
+//        }
+//    }
+
+//    obj.sayHi("嘿嘿")
+</script>

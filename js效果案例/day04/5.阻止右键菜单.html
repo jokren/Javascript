@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        li{
+            height:30px;
+            line-height:30px;
+            border:1px dashed #000;
+            list-style:none;
+            width:100px;
+
+        }
+        ul{
+            position:absolute;
+            display:none;
+        }
+    </style>
+</head>
+<body>
+
+
+<ul>
+    <li>我第1ge</li>
+    <li>我第2ge</li>
+    <li>我第3ge</li>
+    <li>我第4ge</li>
+    <li>我第5ge</li>
+</ul>
+</body>
+</html>
+<script>
+    //阻止 右击菜单的默认行为
+
+    //  on context menu
+    document.oncontextmenu = function(evt){
+        var e = evt || window.event;
+        if(e.preventDefault){
+            e.preventDefault()
+        } else {
+            e.returnValue = false;
+        }
+
+        // 动态创建 自己的 右击菜单
+
+        var x = e.clientX;
+        var y = e.clientY;
+
+        var  oul=document.querySelector("ul");
+        oul.style.left=x+"px";
+        oul.style.top=y+"px";
+        oul.style.display="block";
+
+    }
+
+    document.onclick=function(){
+        var  oul=document.querySelector("ul");
+
+        oul.style.display="none";
+
+    }
+</script>

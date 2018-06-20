@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--<script src="jquery-3.3.1.js"></script>-->
+    <script src="jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<form>
+    <input type="password">
+
+    <input type="text" >
+
+    <input type="radio" checked >
+    <input type="checkbox"  checked>
+
+    <button ></button>
+</form>
+
+<button>获取</button>
+</body>
+</html>
+<script>
+    $(function(){
+
+
+        //判断动态属性 checked selected disabled --> prop("checked")
+        // $("button").click(function(){
+
+        //     console.log($("input:eq(2)").prop("checked"));
+        // })
+
+        $("button").on("click",function () {
+            console.log($("input:eq(0)").prop("checked"))
+        })
+
+
+    })
+</script>

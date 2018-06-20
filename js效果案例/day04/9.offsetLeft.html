@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset 系列</title>
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background-color:#0094ff;
+            /*position:absolute;*/
+        }
+        span{
+            height:150px;
+            width:150px;
+            background-color:pink;
+            display:block;
+            position:absolute;
+            left:100px;
+
+            /*margin:10px;*/
+            border:100px solid #000;
+            padding:10px;
+            box-sizing:border-box;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="box">
+    <span></span>
+</div>
+
+
+</body>
+</html>
+
+<script>
+    //oSpan.offsetParent 如果上一级没有定位,就在往上一级找,
+    //一直到body
+
+    //    var oSpan=document.querySelector("span");
+    //    console.log(oSpan.offsetParent);
+
+    //offsetLeft 当前盒子到 带有定位父盒子的距离,如果上级们,
+    // 都没有定位,就到body
+    // 有奶就是爹
+
+    //    var oSpan=document.querySelector("span");
+    //    console.log(oSpan.offsetLeft);
+
+
+    //offsetWidth  获取自身的宽度
+    //oSpan.offsetWidth 不包含 margin
+
+    //offsetWidth= border + width+padding
+    //    var oSpan=document.querySelector("span");
+    //    console.log(oSpan.offsetWidth);
+
+    //offset系列三大家族
+    //1.offsetParent 获取上级带有定位的元素,如果上级们都没有定位,就默认是body
+    //2.offsetLeft,offsetTop   从当前元素到带有定位的父元素的距离,如果都没有定位,默认到body的距离
+    //3.offsetWidth,offsetHeight,包含(border+padding)
+
+
+</script>

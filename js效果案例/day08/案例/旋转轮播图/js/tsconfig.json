@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "sourceMap": true
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
+/*
+json 的作用
+  1。数据传输
+  2.配置文件。
+   好处，跨平台，与平台无关，传输的体积比较小 使用的格式，键值对。
+
+  以前是用XML
+
+*/
+
+

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn_open">打开子窗口</button>
+<button id="btn_childInner">往子窗口内写入内容</button>
+
+<input id="parent_val" type="text">
+</body>
+</html>
+
+<script>
+    var childWin;
+    document.getElementById('btn_open').onclick = function(){
+        childWin = open("2.child.html", "是子窗口", "height=300,width=300");//要接受子窗口的window对象
+        childWin.moveTo(300, 300);//位置
+
+
+    }
+    //往子窗口内写入内容
+    document.getElementById('btn_childInner').onclick = function(){
+        childWin.document.getElementById("childVal").value = "父往子的框框里面写入内容";
+    }
+
+
+</script>

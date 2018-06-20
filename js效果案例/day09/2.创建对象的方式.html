@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+    var perosn1 = {};
+    perosn1.name = "刘德华";
+    perosn1.sayHI = function(){
+        return "大家好,我是" + this.name;
+    }
+
+    console.log(perosn1.sayHI());
+
+
+    console.log(perosn1);
+
+
+
+
+
+    var person = new Object();
+    person.uname = "周杰伦";
+    person.age = 39;
+    //行为 方法
+    person.sayHi = function(){
+        return "大家好,我是" + this.uname;
+    }
+    console.log(person.sayHi());
+
+
+    console.log(typeof(person));
+    console.log(typeof(perosn1));
+    
+    
+    
+    //构造函数,抽象的模板
+     function Person(_name,_age,_heihgt){
+         this.name=_name;
+         this.age=_age;
+         this.height=_heihgt;
+
+         this.sayHi=function(){
+             console.log("大家好,我是" + this.name);
+         }
+         
+     }
+
+
+
+   var p=new Person("刘德华",18,170); // new 创建 Person 的实例
+
+    p.sayHi();
+
+    var p2=new Person("周杰伦",20,175);
+    p2.sayHi()
+
+    console.log(p == p2);
+
+    console.log(p);
+
+
+    function Cat(){
+
+    }
+    var c=new Cat();
+    console.log(c);
+
+
+
+
+    
+    function Singleton(){
+
+        if(Singleton.instance!==undefined){
+            return Singleton.instance;
+        }
+        Singleton.instance=this;
+    }
+
+    console.log(Singleton.instance);
+
+    var s1=new Singleton();
+    var s2=new Singleton();
+    console.log(s1 == s2);
+
+
+</script>

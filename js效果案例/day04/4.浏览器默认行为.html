@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="http://baidu.com">跳转到百度</a>
+
+
+</body>
+</html>
+<script>
+    //阻止默认行为
+
+    var a = document.querySelector("a");
+    a.onclick = function(evt){
+        ////         return false;  方式一
+        //
+        ////         e.preventDefault();// google 火狐  阻止默认行为
+        //
+        //         //IE
+        //      var e=evt||window.event;
+        //        e.returnValue=false;
+        //
+        //
+        //        if(){
+        //
+        //        }
+
+        //1.先做事件的兼容
+        var e = evt || window.event;
+        //2.阻止默认行为的兼容写法
+
+        if(e.preventDefault){
+            e.preventDefault();// google 火狐
+        } else {
+            // ie 6 7 8
+            e.returnValue = false;
+        }
+
+    }
+
+
+</script>

@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table id="tab">
+    <thead>
+        <th>
+        <td><input type="checkbox"/>全选/取消</td>
+        <td><input type="checkbox"/>反选</td>
+        </th>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>111111</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>22222</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>33333</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>44444</td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td>555555</td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+<script>
+    var inps2=document.querySelectorAll("thead input");
+
+    var inpsAll=document.querySelectorAll("tbody input");
+
+    //1.全选取消  checked selected  disabled required
+    inps2[0].onclick=function(){
+
+        for(var i=0;i<inpsAll.length;i++){
+            inpsAll[i].checked=this.checked;
+        }
+
+    }
+    
+    //
+    for(var i=0;i<inpsAll.length;i++){
+        inpsAll[i].onclick=function(){
+
+            // 1.checkebox的总个数
+            var cbxCount=inpsAll.length;
+            // 2. 打了勾的checkebox的个数;
+            var checkedCount=0;
+             for(var j=0;j<inpsAll.length;j++){
+                  if(inpsAll[j].checked){
+                      checkedCount++;
+                  }
+             }
+
+            console.log(cbxCount,checkedCount);
+
+//            if(cbxCount==checkedCount){
+//                 inps2[0].checked=true;
+//             }else{
+//                inps2[0].checked=false;
+//            }
+            inps2[0].checked= cbxCount==checkedCount
+
+            
+        }
+    }
+
+    //反选
+
+    inps2[1].onclick=function(){
+
+        for(var i=0;i<inpsAll.length;i++){
+            inpsAll[i].checked= !inpsAll[i].checked;
+        }
+    }
+    
+
+</script>

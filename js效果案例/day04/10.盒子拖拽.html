@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        div{
+            height:300px;
+            width:300px;
+            background-color:#0094ff;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+
+    var oBox = document.getElementById('box');
+    //1.按下当前的盒子,
+    oBox.onmousedown = function(evt){
+        var e = evt || window.event;
+        //1.2  获取当前鼠标按下去的坐标到当前盒子的距离
+        //        按下点到盒子的距离=当前按下的点到文档的距离 - 当前盒子到父盒子的距离
+        var tmpX = e.clientX - oBox.offsetLeft;
+        var tmpY = e.clientY - oBox.offsetTop;
+        //2.在按下事件里面移动,移动返回整个文档里面
+        document.onmousemove = function(evt){
+            var e = evt || window.event;
+            oBox.style.left = e.clientX - tmpX + "px";
+            oBox.style.top = e.clientY - tmpY + "px";
+        }
+
+        //3.松开,也是在文档的任何地方松开
+        document.onmouseup = function(){
+            document.onmousemove = document.onmouseup = null
+        }
+    }
+
+
+</script>

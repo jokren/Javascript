@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:#0094ff;
+        }
+    </style>
+</head>
+<body>
+
+  <div id="box"></div>
+
+</body>
+</html>
+<script>
+    //张三写
+//    document.onclick=function(){
+//         alert(123);
+//    }
+//
+//    document.onclick=function(){
+//
+//        alert(456);
+//    }
+
+
+    var oBox=document.getElementById('box');
+    oBox.onclick=function(){
+        alert(123);
+    }
+
+
+
+
+    //使用监听
+    //1.拿到对象
+    //2.注册监听
+    //addEventListener("事件类型","执行的函数",冒泡或捕获)
+    oBox.addEventListener("click",myclick);
+
+    function myclick(){
+        alert(456)
+    }
+
+
+
+
+
+</script>

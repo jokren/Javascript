@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+/*    练习：创建以下构造函数(类)
+
+    Cat: 猫
+    属性：fur (毛皮)
+    方法：eat; miaow
+
+    GarfieldCat : 加菲猫
+    属性：fur; glasses
+    方法：eat; miaow; talk
+
+    TomCat : 汤姆猫
+    属性：fur; friend
+    方法：eat; miaow; catchMouse*/
+
+  function Cat(_fur){
+      this.fur=_fur;
+      this.eat=function(str){
+          return "大家好,我是猫,我的毛色"+this.fur+"我爱吃:"+str;
+      }
+
+      this.miaow=function(){
+          return "我能喵喵喵叫.."
+      }
+
+  }
+
+  var cat1=new Cat("黑色");
+console.log(cat1.eat("鱼"));
+
+
+//
+//  function Yuan(_pi){
+//      this.PI=3.1415927;
+//  }
+
+
+//
+//    function show(){
+//         var  num=0;
+//
+//         return function(n){
+//             num=10;
+//         }
+//    }
+//
+//show()(20);
+
+</script>

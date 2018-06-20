@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html, body{
+            height:100%;
+            width:100%;
+            background-color:#000000;
+        }
+        img{
+            position:absolute;
+            /*border:1px solid red;*/
+        }
+    </style>
+</head>
+<body>
+<img src="imgs/girl.gif" alt="">
+</body>
+</html>
+
+<script>
+    document.documentElement.onclick = function(evt){
+        var e = evt || window.event;
+
+        var oImg = document.querySelector("img"); //1个
+        //获取 img的宽与高度
+        var w = oImg.offsetWidth; //获取自身的宽度
+        var h = oImg.offsetHeight;// 获取自身的高度
+        console.log(w);
+
+        var tmpX = e.clientX;
+
+        var tmpy = e.clientY;
+
+
+        oImg.style.left = tmpX - (w / 2) + "px";
+        oImg.style.top = tmpy - (h / 2) + "px";
+
+    }
+
+
+    document.documentElement.onmousemove = function(evt){
+        var e = evt || window.event;
+        var oImg = document.querySelector("img"); //1个
+
+        //获取 img的宽与高度
+        var w = oImg.offsetWidth; //获取自身的宽度,  oImg.style 不能做获取值操作
+        var h = oImg.offsetHeight;// 获取自身的高度
+
+        var tmpX = e.clientX;
+        var tmpY = e.clientY;
+
+        oImg.style.left = tmpX - (w / 2) + "px"
+        oImg.style.top = tmpY - (h / 2) + "px"
+    }
+</script>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body{
+            height:2000px;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    //
+    //没有声明 DTD(文档类型声明),就是页面的怪异模式
+    // google 火狐 不在怪异模式下  document.documentElement
+    //
+    // document.documentElement 跟DTD(文档类型声明)  document type define 有关
+
+    // document.documentElement
+    // 没有声明 DTD(文档类型声明),就是页面的怪异模式下 google 火狐 IE8以下不支持
+
+
+    //document.body.scrollTop
+    //没有声明 DTD(文档类型声明),就是页面的怪异模式下 google 火狐 IE9支持
+
+    //window.pageYOffset 跟 DTD 无关,跟IE8有关,其他都支持
+
+
+
+    //onscroll 滚动时间
+    document.onscroll = function(){
+
+/*        // document.compatMode 用户判断是否有声明头
+
+
+        console.log(document.compatMode); //   支持的情况下  CSS1Compat ,不支持的情况下 BackCompat
+
+        document.title = document.documentElement.scrollTop
+        console.log(document.documentElement.scrollTop);
+
+//         document.title=document.body.scrollTop;
+//        console.log(document.body.scrollTop);
+
+
+//         document.title=window.pageYOffset
+//        console.log(window.pageYOffset);
+//
+       var scollTop=window.pageYOffset||document.documentElement.scrollTop||document.body.scrollTop||0
+        document.body.innerText=scollTop;
+        console.log(scollTop);*/
+
+        console.log(scoll().top);
+    }
+
+
+    function scoll(){
+        if(window.pageYOffset!=null){
+
+            return {
+                "top":window.pageYOffset,
+                "left":window.pageXOffset
+            }
+        }
+        //document.compatMode 用户判断是否有声明头(DTD)
+        if(document.compatMode=="CSS1Compat"){
+            //有声明头,非怪异模式
+
+            return {
+                "top":document.documentElement.scrollTop,
+                "left":document.documentElement.scrollLeft
+            }
+
+        }
+
+        return {
+            "top":document.body.scrollTop,
+            "left":document.body.scrollLeft
+        }
+
+
+    }
+
+</script>

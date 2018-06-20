@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background-color:#0094ff;
+        }
+        span{
+            height:200px;
+            width:200px;
+            background-color:yellow;
+            display:block;
+        }
+        p{
+            height:100px;
+            width:100px;
+            background-color:pink;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+
+         <span>
+               <p></p>
+         </span>
+
+</div>
+</body>
+</html>
+
+<script>
+    var div = document.querySelector("div");
+    var span = document.querySelector("span");
+    var p = document.querySelector("p");
+    //体现了 事件冒泡, 从里往外  一级一级的传递
+
+    p.onclick = function(evt){
+        alert("section");
+
+        var e = evt || window.event;
+
+        //  e.stopPropagation(); // google写法
+        // 对象不支持“stopPropagation”属性或方法  ie 8 7 6
+
+        e.cancelBubble = true;
+
+        if(e.stopPropagation){
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+
+
+    }
+
+
+    div.onclick = function(){
+        alert("我是div")
+    }
+
+
+    span.onclick = function(){
+        alert("span")
+    }
+
+
+    /*  var obj={};
+      obj.show=function(){
+
+      }
+
+      // 判断是否有这么一个show变量,如果有这个变量,意味着就有这个函数
+      if(obj.show){
+
+      }*/
+
+
+</script>

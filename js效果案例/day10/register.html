@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/promise.Ajax.js"></script>
+</head>
+<body>
+
+<!--
+username,upwd,uname,uage,usex,uaddress
+
+-->
+
+<form id="myform">
+    <input type="text" name="username" id="username" placeholder="username"></br>
+    <input type="text" name="upwd" id="upwd" placeholder="upwd"></br>
+    <input type="text" name="uname" id="uname" placeholder="uname"></br>
+    <input type="text" name="uage" id="uage" placeholder="uage"></br>
+    <input type="text" name="utel" id="utel" placeholder="utel"></br>
+    <input type="text" name="uaddress" id="uaddress" placeholder="uaddress"></br>
+    <input type="text" name="uQQ" id="uQQ" placeholder="QQ"></br>
+    <button id="btn" type="submit">提交</button>
+    <div id="msg"></div>
+</form>
+
+
+</body>
+</html>
+<script>
+
+    var oMyForm = document.getElementById('myform');
+
+    var oMsg = document.getElementById('msg')
+
+    var userNameFlag = false;
+
+    oMyForm.username.oninput = oMyForm.username.onpropertychange = () =>{
+        console.log(oMyForm.username.value);
+
+        Ajax({
+            url : "http://127.0.0.1:80/UserInfo/IsExistUser",
+            data : {"LoginName" : oMyForm.username.value}
+        }).then((res) =>{
+            var resData = JSON.parse(res)
+            userNameFlag = resData.status;
+            oMsg.innerText = resData.msg;
+
+        })
+
+    }
+
+    oMyForm.onsubmit = function(){
+
+        if(userNameFlag && /^\w{6,18}$/.test(oMyForm.username.value)){
+            Ajax({
+                url : "http://useker.cn/UserInfo/regUser",
+                data : {
+                    "LoginName": oMyForm.username.value,
+                    "LoginPwd": oMyForm.upwd.value,
+                    "Address": oMyForm.uaddress.value,
+                    "Age":oMyForm.uage.value,
+                    "QQ":oMyForm.uQQ.value,
+                    "TelPhone": oMyForm.utel.value,
+                    "UserName": oMyForm.uname.value
+                }
+
+            }).then(function(res){
+                if(JSON.parse(res).status&&confirm("注册成功,需要去登录吗?")){
+                      window.location.href="login.html"
+                }
+            })
+
+        } else {
+            alert("别捣蛋..数据都不对,坑我...")
+        }
+        return false;
+
+    }
+
+
+</script>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:yellowgreen;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<button id="btn400">400</button>
+
+<button id="btnTop">Top400</button>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    // 1.匀速动画的公式
+    // 新的位置=当前的位置+步长
+
+    //2.缓动画  先快后面
+
+    // 公式: 新的位置=当前的位置+步长
+
+
+    //  步长 = (目标的位置-当前的位置)/10
+    // 新的位置(当前的位置)    目标的位置    步长
+    //   0                    100          (100-0)/10= 10
+    //   10                   100          (100-10)/10=9
+    //   19                   100           (100-19)/10=8.1
+    //   27.1                 100           (100-27.1) /10= 7.29
+    //   34.39                100            (100-34.39)/10=6.561
+    //   40.951               100               5.9049
+    //                                          0.98
+    //                                           0.5
+    //                                            0.1
+
+
+    //元素 没有,我们就送,但是不能超过目标的位置
+
+    var oBtn400 = document.getElementById('btn400');
+    var oBox = document.getElementById('box');
+
+    oBtn400.onclick = function(){
+        // 新的位置=当前的位置+步长
+//        var timer = setInterval(function(){
+//
+//            // 步长 = (目标的位置-当前的位置)/10
+//            var step = (400 - oBox.offsetLeft) / 10;
+//            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+//
+//            oBox.style.left = oBox.offsetLeft + step + "px";
+//
+//            if(oBox.offsetLeft == 400){
+//                clearInterval(timer)
+//            }
+//            console.log("aaa");
+//        }, 30)
+
+       animate(oBox,"width",400)
+
+    }
+
+
+    var obtnTop = document.getElementById('btnTop');
+    obtnTop.onclick = function(){
+      animate(oBox,"height",400);
+    }
+
+
+    // obj 目标对象
+    //  key  left  top...
+    //  target value
+    function animate(obj,key,target){
+        //1.清空定时器
+        clearInterval(obj.timer);
+        //2.开启当前新的定时器
+
+        obj.timer = setInterval(function(){
+            //2.1 解决步长
+            //2.2 步长=(目标位置-当前的位置)/10
+            var step = (target - parseInt(getStyle(obj,key)) ) / 10;
+
+            //2.3 判断 天花板还是地板函数
+            step = step > 0 ? Math.ceil(step) : Math.floor(step);
+            //2.4 新的位置=当前位置+步长
+
+                obj.style[key] = parseInt(getStyle(obj,key)) + step + "px"
+
+            //2.5 如果到了目标位置 清空定时器
+            if(parseInt(getStyle(obj,key)) == target){
+                clearInterval(obj.tiemr);
+            }
+
+
+        })
+
+    }
+
+
+
+    // JSON 属性轻量  xml
+
+    //JSON 1. 配置文件
+    //     2. 网络传输数据格式
+
+/*
+    var json={
+        "uname":100
+    }
+
+    for (var key in json) {
+        console.log(key); // uname
+        console.log(json[key]);
+    }
+*/
+
+
+//解决 设置值得问题
+//var key="heihgt";
+//
+//    oBox.style[key]="200px";
+
+// oBox.currentStyle  返回也是一个对象 ie 为IE而生的
+
+//    console.log(oBox.currentStyle);
+
+
+    // google
+    // window.getComputedStyle(dom对象,"伪元素")
+
+
+//    console.log(window.getComputedStyle(oBox, null).height);
+
+
+
+    function getStyle(ele,attr){
+            if(window.getComputedStyle){
+                //google 火狐
+               return window.getComputedStyle(ele,null)[attr];
+            }
+            // ie
+            return ele.currentStyle[attr]
+    }
+
+
+    console.log(getStyle(oBox, "height"));
+
+</script>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:300px;
+            width:300px;
+            background-color:#0094ff;
+        }
+        span{
+            height:200px;
+            width:200px;
+            background-color:yellow;
+            display:block;
+        }
+        p{
+            height:100px;
+            width:100px;
+            background-color:pink;
+            display:block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    div <span>
+             span
+               <p>p</p>
+         </span>
+
+</div>
+<button id="btn">移除事件监听</button>
+</body>
+</html>
+<script>
+
+
+    /*
+    * addEventListener("事件类型", 函数, false:冒泡|true:捕获)
+    * 第三个参数不给,默认就是 冒泡
+    * */
+    //    var div = document.querySelector("div");
+    //    div.addEventListener("click", divClick, false)
+    //
+    //    function divClick(){
+    //        alert("div");
+    //    }
+    //
+    //    //
+    //
+    //    var span = document.querySelector("span");
+    //    span.addEventListener("click", spanClick, false)
+    //
+    //    function spanClick(){
+    //        alert("span")
+    //    }
+
+
+    var p = document.querySelector("p");
+    //    p.onclick=function(){
+    //        alert("绑定我自己的函数..onclick")
+    //    }
+    //    p.addEventListener("click", pClick, false)
+    //    function pClick(){
+    //        alert("事件监听的click");
+    //    }
+    //
+    //
+    //    var oBtn=document.getElementById('btn');
+    //    oBtn.onclick=function(){
+    //        //取消事件监听
+    //        // removeEventListener("事件类型","函数名称")
+    //
+    //        p.removeEventListener("click",pClick)
+    //
+    //    }
+
+
+
+</script>

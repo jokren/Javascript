@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    // 自执行函数(自调用函数)
+    // 好处,避免全局变量的污染
+    // 避免与其他代码的冲突
+
+
+
+    (function(str){
+
+        var jquery={};
+        jquery.shwo=function(){
+            
+        }
+        
+
+
+    })("你好");
+
+
+//
+//    var i = 0,j = 0;
+//    // 只会到 5
+//    for(;i<10,j<6;i++,j++){
+//        k = i + j;
+//    }
+//
+
+
+//    for(var i=0;i<10;i++){
+//    //里面最多到 9
+//    }
+//    //外面到10
+//    console.log(i); //10
+
+//
+//    var x = 1;
+//    function fn(n){
+//        n = n+1
+//    };
+//    y = fn(x);
+//    y
+
+//    var n = "miao wei ke tang".indexOf("wei",6);
+//
+//    console.log(n);
+//
+//
+//    substring(10,length)
+
+//    var str="abcabcabc";
+//    console.log(str.substring());
+
+// 字符串比较 是比较 ascii码
+    // 字符串与数字比  自动转数值
+
+
+   // alert( "z" >9 ) // true
+
+
+//
+//    for(var i=0;i<obj.length;i++){
+//            return 1;
+//    }
+
+
+//    var str="abcabc"; // 字符串恒定性
+//      str.length=10;
+//    console.log(str.length);
+
+
+
+//    var arr = [1,2];
+//    var arr2 = arr.concat(); // [1,2]
+//    arr2.push( arr.splice(1,0) );
+//    console.log(arr2);
+    //                  []
+
+    // splice 返回被删除的那个元素
+
+//    var arr = [1,2];
+//    console.log(arr.splice(1,1));
+
+
+
+//
+//    var a = 10;
+//    function test() {
+//        var a;
+//
+//        a = 100;
+//        alert(a);//100
+//        alert(this.a);// 10  this  window
+//
+//        alert(a);//100
+//    }
+//    test();
+//
+//
+//
+//    var uname="周杰伦";
+//
+//    console.dir(window);
+//
+//
+//    function show(){
+//
+//        this // 就是 window
+//    }
+//
+//    show();
+
+
+
+    // 写一个方法，找出字符串 "abcabcabcabcabcabda" 中 "ab" 出现的次数和位置
+
+
+//    var  str="abcabcabcabcabcabda";
+//
+//    console.log(str.indexOf("ab"));
+//
+//
+//     var  num=0;
+//
+//     var  index=0;
+//    function test(str){
+//
+//
+//        while(str.indexOf("ab")!=-1){
+//           str.substr(str.indexOf("ab")+2);
+//            index+=2
+//            console.log(str);
+//            num++;
+//        }
+//    }
+//    test(str);
+//    console.log(num);
+
+
+    var str = "abcabcabcabcabcabda";
+
+    var arr = [];
+    var n = 0;
+    while(str.indexOf("ab",n) != -1 && n < str.length) {
+        arr.push(str.indexOf("ab", n)); //找到的下标放到数组里面
+        n = str.indexOf("ab", n) + 2;
+    }
+    console.log(arr);
+
+</script>

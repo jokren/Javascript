@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        table{
+            border-collapse:collapse;
+            border-spacing:0;
+            border:1px solid #c0c0c0;
+        }
+        th,
+        td{
+            border:1px solid #d0d0d0;
+            color:#404060;
+            padding:10px;
+        }
+        th{
+            background-color:#09c;
+            font:bold 16px "微软雅黑";
+            color:#fff;
+        }
+        td{
+            font:14px "微软雅黑";
+        }
+        tbody tr{
+            background-color:#f0f0f0;
+        }
+        tbody tr:hover{
+            cursor:pointer;
+            background-color:#fafafa;
+        }
+    </style>
+    <script src="../jquery-3.3.1.js"></script>
+    <script>
+        // 模拟从后台拿到的数据
+        var data = [{
+            name : "千锋教育",
+            url : "http://www.1000phone.cn",
+            type : "IT最强培训机构"
+        }, {
+            name : "千锋教育",
+            url : "http://www.1000phone.com",
+            type : "大学生IT培训机构"
+        }, {
+            name : "千锋教育",
+            url : "http://web.1000phone.cn",
+            type : "前端的黄埔军校"
+        }];
+
+
+    </script>
+</head>
+
+<body>
+<input type="button" value="获取数据" id="j_btnGetData"/>
+<table>
+    <thead>
+        <tr>
+            <th>标题</th>
+            <th>地址</th>
+            <th>说明</th>
+        </tr>
+    </thead>
+    <tbody id="j_tbData">
+
+
+    </tbody>
+</table>
+</body>
+
+</html>
+<script>
+
+    $(function(){
+
+        $("[id=j_btnGetData]").click(function(){
+
+            data.forEach(function(ele, index){
+
+                var str = `<tr><td>${ele.name}</td> <td>${ele.url}</td> <td>${ele.type}</td></tr>`;
+
+                $("#j_tbData").html($("#j_tbData").html() + str);
+
+            })
+
+
+        })
+
+
+    })
+
+</script>

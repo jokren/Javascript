@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.js"></script>
+    <style>
+        div{
+            height:120px;
+            width:120px;
+            background-color:yellow;
+        }
+        .cls{
+            height:220px;
+            width:220px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+<div class="cls aaa bbb"></div>
+
+</body>
+</html>
+<script>
+
+     jQuery(document).ready(function(){
+
+          //获取的是 返回具体值,但不是返回jq对象,所有不能链式编程
+         console.log($("div").css("height"));
+
+         // 设置值操作
+//          $("div").css("height","100px").css("width",100).css("background","#0094ff");
+
+//
+//         var objstyle={
+//             "height":"200px",
+//             "width":"200px"
+//         }
+//
+//         $("div").css(objstyle)
+
+
+
+
+         //2.类样式操作
+//         $("div").addClass("cls")
+
+//         $("div").removeClass("aaa")
+
+
+         console.log($("div").hasClass("aaa"));
+
+
+     })
+</script>
+

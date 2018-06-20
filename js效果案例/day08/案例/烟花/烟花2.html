@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Useker.tools.js"></script>
+    <style>
+        div{
+            position:absolute;
+        }
+        *{
+            height:100%;
+            width:100%;
+            overflow:hidden;
+            background-color:#000000;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+
+
+//    var angle = 20;//角度
+//    var r = 100;
+//    for(var i = 0; i < 18; i++){
+//        var tempAngle = angle * i; //角度
+//
+//        var div = document.createElement("div");
+//        var color = randomColor();
+//        div.style.backgroundColor = color;
+//        div.style.height = "10px";
+//        div.style.width = "10px";
+//        div.style.borderRadius = "2px";
+//
+//        var X = r * Math.cos(tempAngle * Math.PI / 180);
+//        var Y = r * Math.sin(tempAngle * Math.PI / 180);
+//
+//        document.body.appendChild(div);
+//
+//        animate(div, {left : 300 + X, top : 300 + Y}, function(obj){
+//            obj.remove();
+//        })
+//
+//
+//    }
+
+    function randomColor(){
+
+        return "RGB(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ")"
+    }
+
+    window.onclick=function(evt){
+        var e=evt||window.event;
+         var x=e.pageX;
+         var y=e.pageY;
+
+        console.log(document.body.clientHeight);
+      var div=createDiv(x,y);
+      animate(div,{"top":y},function(o){
+          o.remove();
+
+
+
+
+          for(var i=0;i<40;i++){
+
+
+            createDiv1(x,y)
+
+          }
+
+      })
+
+    }
+
+
+
+    function createDiv1(x,y){
+        var div = document.createElement("div");
+        var color = randomColor();
+        div.style.backgroundColor = color;
+        div.style.height = "5px";
+        div.style.width = "5px";
+        div.style.borderRadius = "2px";
+        div.style.left=x+"px";
+        div.style.top=y+"px";
+
+        document.body.appendChild(div);
+
+
+        //-20 到20
+        var disX=parseInt(Math.random()*21)* (Math.random()>0.5?1:-1);
+        var disY=parseInt(Math.random()*21)* (Math.random()>0.5?1:-1);
+        console.log(disX,disX);
+
+
+
+        setInterval(function(){
+            disY++;
+
+            div.style.left=div.offsetLeft+disX+"px";
+            div.style.top=div.offsetTop+disY+"px";
+        },50)
+
+
+        return div;
+    }
+
+
+    function createDiv(x,y){
+        var div = document.createElement("div");
+        var color = randomColor();
+        div.style.backgroundColor = color;
+        div.style.height = "5px";
+        div.style.width = "5px";
+        div.style.borderRadius = "2px";
+        div.style.left=x+"px";
+        div.style.top=document.body.clientHeight-20+"px";
+
+        document.body.appendChild(div);
+        return div;
+    }
+
+</script>
+
+
+</body>
+</html>

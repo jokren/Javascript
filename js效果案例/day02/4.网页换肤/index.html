@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" id="links" type="text/css" href="css/css1.css">
+</head>
+<body>
+
+ <div>
+     <button id="btn1">皮肤1</button>
+     <button id="btn2">皮肤2</button>
+ </div>
+
+</body>
+</html>
+<script>
+    var oLinks=document.getElementById('links');
+
+
+    document.getElementById('btn1').onclick=function(){
+        oLinks.href="css/css1.css"
+    }
+
+    document.getElementById('btn2').onclick=function(){
+        oLinks.href="css/css2.css"
+    }
+
+</script>

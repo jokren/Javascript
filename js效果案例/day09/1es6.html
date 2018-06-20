@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html,body{
+            height:100%;
+            width:100%;
+        }
+    </style>
+</head>
+<body>
+
+</body>
+</html>
+
+<script src="babel.min.js"></script>
+<script>
+    // Your ES6 code
+    //      let uname="周杰伦";
+    //
+    //     const PI=3.14;
+
+    //    {
+    //        let uname="你好" //块作用域
+    //
+    //    }
+    //
+    //    console.log(uname);
+
+
+    //    const COOLMAN="尹文魁";
+
+
+    /*    var fn = function(a, b) {
+            return a + b;
+        }
+
+        var fn1 =(a,b)=>{return  a+b;}
+
+        console.log(fn1(10, 20));*/
+
+    /*    var a = 20;
+        var b = 30;
+        var string = a + "+" + b + "=" + (a + b)
+
+        var str=`${a}+${b}=${a+b}`;
+        console.log(str);*/
+
+    // 解析结构
+    //
+    //    var  [x,y]=[10,20]
+
+
+    /*    var [x, [a, b, [c, d]]] = [1, [2, 3, [4, 5]]];
+        var arr = [];
+        function show(obj){
+            for(let k of obj){
+                if(typeof(k)=="object"){
+                    show(k)
+                }
+                if(typeof(k)=="number"){
+                    arr.push(k);
+                }
+            }
+        }
+        show([x, [a, b, [c, d]]])
+        console.log(arr);*/
+
+
+    // 扁平化
+    //    [1,2,3,4,5]
+
+
+    var [x, [a, b, [c, d]]] = [1, [2, 3, [4, 5]]];
+
+    var arr = [x, [a, b, [c, d]]].toString().split(",");
+
+    const props = {
+        className : 'tiger-button',
+        loading : false,
+        clicked : true,
+        disabled : 'disabled'
+    }
+
+
+    var className = "tiger-button";
+    var loading = false;
+
+    var pro = {className, loading};
+
+    //    console.log(pro);
+
+    //默认参数
+
+    /*
+        function add(x, y) {
+            var x = x || 20;
+
+            var y = y || 30;
+            return x + y;
+        }
+        console.log(add()); // 50
+
+
+        //默认参数
+        function add1(x=20,y=30){
+            return x+y;
+        }*/
+
+
+ /*   // rest语法
+    function test(...abc){
+        console.log(abc);
+    }
+
+    test(1, 2, 3, 4)
+
+    //Set 数据结构 不能有重复
+
+
+    var arr = [11, 22, 33, 44, 33, 22];
+    var ss = new Set(arr);
+
+
+    //历史上 最短数组去重
+    var arr = [11, 22, 33, 44, 33, 22];
+
+    var tmpArr = new Array(...new Set(arr));
+
+    console.log(tmpArr);
+
+
+    function notRepeat(arr){
+        var arrT = [];
+        for(var i = 0; i < arr.length; i++){
+            // arrT.indexOf(arr[i])==-1?arrT.push(arr[i]):null;
+
+            if(arrT.indexOf(arr[i]) == -1){
+                arrT.push(arr[i])
+            }
+        }
+    }
+
+
+    // Promise 语法
+    // resolve 成功
+    // reject  失败
+    var p = new Promise(function(resolve, reject){
+
+    })
+
+    p.then()
+
+
+    function runAsync(){
+
+        var p = new Promise(function(success, error){
+            // 如果成功就调用
+            if(1 == 2){
+                success("成功")
+            } else {
+                error("失败");
+            }
+        });
+        return p;
+    }
+
+    runAsync().then(
+        function(data1){console.log(data1);},
+        function(data2){console.log(data2);})
+
+
+    function success(){
+
+    }
+
+    function error(){
+
+    }
+
+    function aaa(){
+
+        if(true){
+            success()
+        } else {
+            error();
+        }
+
+    }
+*/
+
+    // ES6新加的数据结构 Set 不能有重复
+
+    // new Array(...new Set())
+
+//     var s=new Set();
+//
+//    console.log(typeof(s));
+
+    var m=new Map([{"uname":"周杰伦"},{"AGE":18}]) ;// 超对象
+    console.log(m);
+
+    let map = new Map([["uname","周杰伦"],[2,"bbb"]]);
+    console.log(map.size); //2
+    console.log(map.get("uname"));
+    map.set("age",18)
+
+
+
+    console.log(map.values());
+    console.log(map.keys());
+    map.delete("uname");
+map.clear()
+    console.log(map);
+
+    // size 个数
+    // get() 通过键找值
+    // set(键,值)
+    // keys() 返回所有的键
+    // values() 返回所有的值
+    // delete(键) 删除当前项
+    // clear() 清除所有项
+
+    // 数据类型  6+1
+    // Number String object boolean null undefined,Symbol
+
+    // Symbol
+    var obj = {};
+
+    // 作为属性名, 防止属性的值被更改
+    var n = Symbol();
+    obj[n] = 'hello';
+
+    obj[n]; // "hello"
+
+    // 生成器函数   * , yield ,next
+    
+    
+    function *testA(x,y){
+        var result=yield x+y;
+        return result;
+    }
+
+    var r=testA(10,20);
+
+    console.log(r);
+    console.log(r.next());
+    console.log(r.next());
+
+
+    function abc(x,y){
+        console.log(this); // window
+        return x+y;
+
+    }
+
+    abc()
+
+//    let fnA=(x,y)=>{
+//        console.log(this);
+//
+//        return x+y;
+//    }
+//
+//    fnA(10,20)
+
+
+    document.body.onclick=()=>{
+        console.log(this);
+    }
+
+</script>

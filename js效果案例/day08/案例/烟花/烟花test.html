@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../useker.animate3.js"></script>
+    <style>
+        div{
+            position:absolute;
+        }
+        *{
+            height:100%;
+            width:100%;
+            overflow:hidden;
+            background-color:#000000;
+        }
+    </style>
+</head>
+<body>
+
+
+</body>
+</html>
+
+<script>
+    document.onclick = function(evt){
+        var e = evt || window.event;
+        var x = e.clientX;
+        var y = e.clientY;
+
+        var moveDIV = moveToDIV(x);
+        animate(moveDIV, {"top" : y}, function(o){
+            o.remove();
+            for(var i = 0; i < 40; i++){
+                BoomDIV(x, y)
+            }
+        })
+    }
+
+    //
+
+    function randomColor(){
+        var str = "rgb(";
+        str += parseInt(Math.random() * 256) + ",";
+        str += parseInt(Math.random() * 256) + ",";
+        str += parseInt(Math.random() * 256) + ")";
+        return str;
+    }
+
+
+    function moveToDIV(x){
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        div.style.height = "10px";
+        div.style.width = "10px";
+        div.style.backgroundColor = randomColor();
+        div.style.position = "absolute";
+        div.style.bottom = "0px";
+        div.style.left = x + "px";
+        return div;
+    }
+
+    function BoomDIV(X, Y){
+        var div = document.createElement("div");
+        document.body.appendChild(div);
+        div.style.height = "5px";
+        div.style.width = "5px";
+        div.style.backgroundColor = randomColor();
+        div.style.position = "absolute";
+        div.style.top = Y + "px";
+        div.style.left = X + "px";
+
+        var speedy = parseInt(Math.random() * 21) * (Math.random() > 0.5 ? -1 : 1);
+        var speedx = parseInt(Math.random() * 21) * (Math.random() > 0.5 ? -1 : 1);
+        div.timer1 = setInterval(function(){
+            speedy++;
+            div.style.top = div.offsetTop + speedy + "px";
+            div.style.left = div.offsetLeft + speedx + "px";
+
+            if(div.offsetLeft <= 0 || div.offsetLeft >= document.documentElement.clientWidth){
+                div.remove();
+                clearInterval(div.timer1)
+            }
+            if(div.offsetTop > document.body.clientHeight){
+                div.remove();
+                clearInterval(div.timer1);
+            }
+
+
+        }, 30)
+
+
+        return div;
+    }
+
+</script>

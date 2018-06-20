@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<ul>
+
+    <li>我是第1个</li>
+    <li>我是第2个</li>
+    <li>我是第3个</li>
+    <li id="li4">我是第4个</li>
+    <li>我是第5个</li>
+
+</ul>
+</body>
+</html>
+<script>
+    //  append 追加子节点,会追加成最后一个 子元素
+    //  appendTo
+
+    //prepend 追加 成为 第一个子元素
+    //prependTo
+    //
+
+    $(function(){
+//       $("ul").append($("<div>div</div>"))
+
+//        $("ul").prepend($("<div>div</div>"));
+
+        $("<div>div</div>").prependTo("ul")
+    })
+    
+</script>

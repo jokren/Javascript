@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:#0094ff;
+            position:absolute;
+            opacity:1;
+
+        }
+
+        span{
+            display:block;
+            height:500px;
+            width:500px;
+            background-color:yellow;
+            position:absolute;
+            z-index:999;
+        }
+    </style>
+    <script src="useker.animate3.js"></script>
+</head>
+<body>
+  <button id="btn">change</button>
+<div id="box"></div>
+<span></span>
+</body>
+</html>
+<script>
+
+    // 异常处理,建议合理使用,适当使用,勿滥用
+
+/*    try{
+        //有可能会出错的地方
+    } catch(e) {
+         e.message
+        // 出了异常 才会触发
+    }finally{
+        //不管出不出 异常都会执行
+    }
+    */
+
+    window.onload=function(){
+
+        var obox=document.getElementById('box');
+
+
+        var oBtn=document.getElementById('btn');
+         oBtn.onclick=function(){
+             animate(obox,{"height":400,"left":400,"opacity":0.5,"zIndex":1000},function(o){
+
+                 animate(o,{"width":400})
+
+
+             })
+
+
+         }
+
+
+    }
+
+</script>

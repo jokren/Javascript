@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:200px;
+            width:200px;
+            background-color:#0094ff;
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+</body>
+</html>
+<script>
+    var oBox = document.getElementById('box');
+    //1.给盒子绑定鼠标按下去事件
+    oBox.onmousedown = function(evt){
+        var e = evt || window.event;//  事件兼容
+        var tmpX = e.clientX-oBox.offsetLeft;
+        var tmpY = e.clientY-oBox.offsetTop;
+        //2.在按下去事件里面 做移动操作
+        document.onmousemove = function(evt){
+            var ee = evt || window.event;
+            var mX = ee.clientX;//正在移动的位置
+            var mY = ee.clientY;
+
+            oBox.style.left = mX - tmpX + "px";
+            oBox.style.top = mY - tmpY + "px";
+        }
+        //3.松开 固定位置
+         document.onmouseup=function(evt){
+             var ee=evt||window.event;
+             document.onmousemove =document.onmouseup=null;
+         }
+    }
+
+</script>

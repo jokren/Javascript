@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:150px;
+            width:150px;
+            background-color:#f66;
+            position:absolute;
+        }
+        div:nth-child(1){
+            background-color:yellowgreen;
+            left:300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+<div id="box2"></div>
+</body>
+</html>
+
+<script>
+    //  采用原型实现拖拽功能
+
+
+    var OBOX = new Object()
+
+    var cons = {
+        constructor : Object,
+        ele : null,
+        init : function(_id){
+            this.ele = document.getElementById(_id);
+            return this;
+        },
+        moveStart : function(){
+            var self = this;
+            this.ele.onmousedown = function(evt){
+                var e = evt || window.event;
+                var disX = e.offsetX;
+                var disY = e.offsetY;
+
+                //开始移动
+                self.moveIng(disX, disY);
+                self.moveEnd();
+            }
+
+
+        },
+        moveIng : function(disx, disy){
+            var self = this;
+            document.onmousemove = function(evt){
+                var e = evt || window.event;
+                self.ele.style.left = e.clientX - disx + "px";
+                self.ele.style.top = e.clientY - disy + "px";
+            }
+        },
+        //松开
+        moveEnd : function(){
+            document.onmouseup = function(){
+                document.onmousemove = document.onmouseup = null;
+            }
+
+        }
+
+
+    };
+
+    OBOX.__proto__ = cons
+
+    OBOX.init("box").moveStart()
+
+
+    function DragBox(){
+
+    }
+
+    DragBox.prototype = cons;
+
+    new DragBox().init("box2").moveStart()
+</script>

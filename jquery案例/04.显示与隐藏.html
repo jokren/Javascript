@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{ height:300px;
+            width:300px;
+            background-color:#999999
+        }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<input type="button" value="显示" ><input type="button" value="隐藏">
+<div></div>
+</body>
+</html>
+
+<script>
+    $(function(){
+
+        $("input:last").click(function(){
+
+
+            /* slow：600ms、normal：400ms、fast：200ms */
+            $("div").hide(3000,function(){
+
+            });
+
+        })
+
+        $("input:first").click(function(){
+
+
+            /* slow：600ms、normal：400ms、fast：200ms */
+            $("div").show(3000)
+
+        })
+
+
+    })
+</script>

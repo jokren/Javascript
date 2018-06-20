@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+
+    // bind 函数体后面加 bind 改变函数体内的 this
+    //call,apply 是函数的执行处 改变this
+
+    var obj = {"uname" : "王宝强"};
+
+    //    setTimeout(function(){
+    //        console.log(this);  //window
+    //    }.bind(obj))
+
+    function fn(num1,num2){
+        console.log(this);
+        console.log(num1,num2);
+    }
+
+    function show(tmp){
+//        tmp.call(obj,100)
+        tmp.apply(obj,[100,200])
+    }
+
+
+    show(fn)
+</script>

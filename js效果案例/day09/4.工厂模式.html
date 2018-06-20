@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    var p1 = new Object();
+    p1.name = "刘德华";
+    p1.age = 18;
+
+    var p2 = new Object();
+    p2.name = "周杰伦";
+    p2.age = 20;
+
+        // 工厂模式
+    function createObj(_name, _age){
+        var p = new Object();
+        p.name = _name;
+        p.age = _age;
+        return p;
+    }
+
+
+     var pA=createObj("蔡依林",38);
+
+    console.log(pA);
+
+    var pB=createObj("刘万",18);
+
+
+
+    function Person(){
+        this.name
+    }
+
+
+    var p=new Person();
+    var p1=new Person()
+
+</script>

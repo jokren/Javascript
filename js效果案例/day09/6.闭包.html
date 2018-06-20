@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    /*
+        function fn(){
+           var num=100;
+        }
+
+        fn();
+        num=200;
+    */
+
+    // 1无法修改一个函数内部的 局部变量
+
+
+
+    //2.  为了改变一个函数内部的 局部变量,我们是用闭包
+/*    function fn(){
+        var num = 10;
+        return function(n){
+            num = n;
+        }
+    }
+
+    var ff = fn();
+    ff(100);
+
+
+    var f2=fn();
+    f2(200)
+    f2(300)*/
+
+
+
+
+//  function fn(){
+//      var num=10;
+//      return function(){
+//           num++;
+//          console.log(num);
+//      }
+//  }
+//
+//  var f=fn();
+//  f();//11
+//    f();//12
+//
+//
+//    var f1=fn();
+//    f1();//
+
+
+//    function fn(){
+//
+//        var num=10;
+//        return {
+//            add:function(n){
+//                num=n
+//                console.log(num);
+//            }
+//        }
+//    }
+//
+//    fn().add(100)
+
+    //1. 让一个函数可以去访问另外一个函数内部的 局部变量
+    //2. 避免全局污染
+    //缺点
+     // 局部变量,不容易被释放(销毁),驻扎在内存中
+
+    //关于内存释放机制
+    //1. 计数法
+    //2. 标记法
+
+
+
+    function fn(){
+        var num=10;
+        return {
+            update:function(){
+
+                console.log(num);
+            },
+            getNum:function(){
+
+            }
+        }
+    }
+
+ var ff=fn();
+
+  var n=ff.getNum();//取局部变量的 值
+    console.log(n);
+
+
+</script>

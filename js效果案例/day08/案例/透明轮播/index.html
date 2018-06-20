@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<SCRIPT src="../Useker.tools.js"></SCRIPT>
+    <style>
+        #box {
+            height: 500px;
+            width: 800px;
+            border: 1px solid #c0c0c0;
+
+            position: absolute;
+            margin: 100px auto;
+            left: 100px;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        ul > li {
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+        li:nth-child(1) {
+
+            /*background-color: red;*/
+        }
+
+        li:nth-child(2) {
+            /*background-color: yellow;*/
+        }
+
+        li:nth-child(3) {
+            /*background-color: green;*/
+        }
+
+        li:nth-child(4) {
+            /*background-color: #0094ff;*/
+        }
+
+        li:nth-child(5) {
+            /*background-color: pink;*/
+        }
+
+        ol {
+            list-style: none;
+            width: 100%;
+            margin-top: 5px;
+        }
+
+        ol > li {
+            height: 100px;
+            width: 146px;
+            margin-left: 8px;
+            float: left;
+            text-align: center;
+            border: 1px solid #999999;
+        }
+
+        ol > li img {
+            height: 100px;
+            width: 146px;
+            float: left;
+        }
+    </style>
+
+</head>
+<body>
+
+
+<div id="box">
+    <ul id="ul">
+        <li><a href="javascript:void(0)"><img src="images/slidepic1.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic2.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic3.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic4.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic5.jpg" alt=""/></a></li>
+    </ul>
+
+    <ol id="ol">
+        <li><a href="javascript:void(0)"><img src="images/slidepic1.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic2.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic3.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic4.jpg" alt=""/></a></li>
+        <li><a href="javascript:void(0)"><img src="images/slidepic5.jpg" alt=""/></a></li>
+    </ol>
+</div>
+</body>
+</html>
+<script>
+    var oBox = document.getElementById('box');
+    var ul = document.getElementById('ul');
+    var ol = document.getElementById('ol');
+    var lis = ul.children;
+    var olls=ol.children;
+
+   var timer=setInterval(autoPlay, 1500);
+
+    var index = 0;
+    function autoPlay() {
+        index++; //
+        console.log(index);
+        if (index >= 5) {
+            index = 0
+        }
+//      if(index<0){
+//          index=4;
+//      }
+
+        for (var i = 0; i < lis.length; i++) {
+
+            if (i == index) {
+                animate(lis[index], {"opacity": 1});
+                animate(olls[index], {"opacity": 1})
+
+
+            } else {
+                animate(lis[i], {"opacity": 0})
+                animate(olls[i], {"opacity": 0.1})
+            }
+        }
+
+
+        for(var i=0;i<olls.length;i++){
+            console.log(olls);
+            olls[i].index=i;
+            olls[i].onmouseenter=function () {
+                index=this.index;
+                index--;
+                clearInterval(timer);
+                autoPlay();
+            }
+            olls[i].onmouseleave=function () {
+                index=this.index;
+                index;
+                timer=setInterval(autoPlay, 1500);
+            }
+        }
+
+
+
+        ul.onmouseenter=function () {
+            clearInterval(timer);
+        }
+
+        ul.onmouseleave=function () {
+            timer=setInterval(autoPlay, 1500);
+        }
+
+    }
+
+
+</script>

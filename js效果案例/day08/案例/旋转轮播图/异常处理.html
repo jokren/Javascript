@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #img{
+            height:100px;
+            width:100px;
+            border:1px solid #000;;
+        }
+    </style>
+</head>
+
+<body>
+<div id="divs"></div>
+</body>
+</html>
+<!--<script src="js/test.js"></script>-->
+
+<script>
+
+    /*
+    * 异常处理
+    * try+ table
+    *
+    * try 捕获异常
+    *
+    *  如果出现错误， catch{} 里面的代码就会被执行
+    *  finally{}  不管有没有错误，都会去执行 这个   finally{}
+    *
+    *  try {
+    *      自己做出预判，会出错的代码 加上 try ，
+     *  }catch(e){
+     *     如果真的出错了，这个区域的代码，会被执行。
+     *  }finally{
+     *    不管有没有错，最终都会执行 finally里的代码
+     *  }
+    * 异常捕获，少用，影响浏览器解析你代码的性能。
+    * */
+    function show(){
+
+
+        try{
+            var divs= document.getElementById('div');
+            divs.innerText='老罗最帅';
+        } catch(e) {
+            alert("出错了"+e)
+        }finally{
+            alert("老罗是真的很帅");
+        }
+
+
+
+
+    }
+
+
+
+    show();
+
+</script>

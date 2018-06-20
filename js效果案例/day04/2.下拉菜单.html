@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style:none;
+            position:relative;
+            top:2px;
+            display:none;
+        }
+        li{
+            height:38px;
+            line-height:38px;
+            text-align:center;
+            border:1px dashed #000;
+            width:200px;
+        }
+        #box{
+            margin-top:50px;
+            left:100px;
+            position:relative;
+            border:1px solid #000;
+            width:200px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <input>
+    <ul>
+        <li>我第1个</li>
+        <li>我第2个</li>
+        <li>我第3个</li>
+        <li>我第4个</li>
+        <li>我第5个</li>
+    </ul>
+</div>
+</body>
+</html>
+<script>
+    var oBox = document.getElementById('box');
+
+    oBox.onmouseenter = function(){
+        var oUl = oBox.getElementsByTagName("ul");
+        oUl[0].style.display = "block";
+    }
+
+    oBox.onmouseleave = function(){
+        var oUl = oBox.getElementsByTagName("ul");
+        oUl[0].style.display = "none";
+        var olis = oBox.getElementsByTagName("li");
+
+        for(var i = 0; i < olis.length; i++){
+            olis[i].style.backgroundColor = "#fff"
+        }
+    }
+    // 1.给li标签绑定移入事件
+    var oLis = oBox.getElementsByTagName("li");
+    for(var i = 0; i < oLis.length; i++){
+        //鼠标移入
+        oLis[i].onmouseenter = function(){
+
+            // 排他
+            for(var j = 0; j < oLis.length; j++){
+                oLis[j].style.backgroundColor = "#fff"
+            }
+            //给自己设置一个颜色
+            this.style.backgroundColor = "#c0c0c0";
+
+        }
+        //
+    }
+
+    //2.给每一个li绑定点击事件.在点击之后把当前的内容 添加 input
+
+    for(var i = 0; i < oLis.length; i++){
+        oLis[i].tmpIndex = i;
+        oLis[i].onclick = function(){
+            var inp = oBox.getElementsByTagName("input")[0];
+            inp.value = oLis[this.tmpIndex].innerText
+        }
+    }
+
+
+</script>

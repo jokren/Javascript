@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+
+    //对象: 普通对象  var  obj={}  var obj=new Object()
+    //     构造函数对象    function Person(){}   new 实例
+
+
+    //1. 原型 prototype
+    //2. 原型链
+
+    // Person.prototype   prototype 原型
+
+
+    //    var Obj={}
+    //    Obj.sayhi={}
+
+    //// 构造函数
+    //    function Person(){
+    //        this.name="周杰伦";
+    //        this.sayHi=function(){
+    //
+    //        }
+    //    }
+    //
+    //console.dir(Person.prototype);
+
+
+    //  原型对象有什么作用?
+    //1. 原型对象就是为了 方法共享(公有化)
+
+    //2. 尽量对象的 属性私有化,方法就 公有化
+
+    //
+    //    //构造函数 模板
+    //    function Person(_name){
+    //        this.uname=_name;
+    //    }
+    //
+    //
+    //
+    //
+    //    Person.prototype.run = function(){
+    //
+    //        console.log("我是"+this.uname+"我是超人,我出生就能跑");
+    //    }
+    //
+    ////
+    //    var p1 = new Person("王宝强");
+    //    console.log(p1.uname);
+    //    p1.run()
+    //    //
+    ////    p1.run();
+    ////
+    ////
+    //    var p2 = new Person("马蓉");
+    //    console.log(p2.uname);
+    //    p2.run()
+    //
+    //
+    //    console.log(p1.run == p2.run);
+
+
+    //
+    //
+    //    function Person(){
+    //
+    //    }
+    //
+    //    console.log(Person.prototype.constructor == Person);
+    //
+    //    var person1=new Person();
+    //
+    //    // person1.__proto__ 实例对象的指针
+    //    console.log(person1.__proto__ == Person.prototype);
+
+    // 掌握的方法
+
+
+    //    function Cat(){
+    //
+    //    }
+    //
+    //    function Dog(){
+    //
+    //    }
+    //
+    //    var c=new Cat();//猫
+    //
+    //    var d=new Dog();//狗
+    //
+    //
+    //    console.log(Dog.prototype.isPrototypeOf(d));
+    //
+    //
+    //    console.log(c instanceof(Dog))
+
+    //原型对象 是一个对象.是对象 可以有 属性与方法
+    // 如果私有的属性与方法优先
+
+
+    function Person(){
+        this.uname = "蔡依林"
+
+    }
+
+    // Person.prototype.uname="刘德华";
+    //
+    //
+    var p = new Person();
+
+    //它只能 私有的属性中 ,公有中就是fasle
+    //    console.log(p.hasOwnProperty("uname"));
+
+    // 它是判断实例中是否存在,有就返回true
+    console.log("uname" in p)
+
+    //有没有一个方法找公有的的呢?
+
+    //    function proToPublice(obj,attr){
+    //
+    //        if(attr in obj && !obj.hasOwnProperty(attr)){
+    //                return true;
+    //        }
+    //        return false;
+    //
+    //    }
+    //
+
+
+    //    var str="a b  c  s dsada";
+    //
+    //    String.prototype.notTrim=function(){
+    ////        console.log(this.toString());
+    //        return  this.toString().replace(/\s+/g,"");
+    //
+    //    }
+    //
+    //    console.log(str.notTrim());
+
+
+    //
+    //    var obj={};
+    //    console.log(obj.constructor==Object.prototype);
+    //
+    //
+    //
+    //    function Person(){
+    //
+    //    }
+    //
+    //    Person.prototype={
+    //         constructor:Person, //强行改一波
+    //         add:function(){
+    //
+    //         },
+    //        remove:function(){
+    //
+    //        }
+    //
+    //    }
+    //
+    //
+    //    // 1.如果想一次添加多个方法,使用对象赋值
+
+
+    function Person(){
+
+    }
+
+    Person.prototype = {
+        constructor : Person,
+        arr:["爸爸", "妈妈", "姐姐", "弟弟"],
+
+        add : function(str){
+            this.arr.push(str)
+        },
+
+        show : function(){
+            console.log("我们家有:" + this.arr.toString());
+        }
+
+    }
+
+
+    var xiaoming = new Person();
+
+    xiaoming.add("妹妹");
+
+    xiaoming.show()
+
+
+    var xiaohong = new Person();
+
+    xiaohong.show(); // "爸爸","妈妈","姐姐","弟弟",妹妹
+</script>

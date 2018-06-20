@@ -1,0 +1,80 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>无标题文档</title>
+    <style type="text/css">
+        body, ul, ol, li, img{ margin:0; padding:0; list-style:none; }
+        #box{ width:490px; height:170px; padding:5px;
+            position:relative; border:1px solid #ccc;
+            margin:100px auto 0;  }
+        .ad{ width:490px; height:170px;  position:relative; }
+        #box img{ width:490px; }
+        .ad ol{ position:absolute; right:10px; bottom:10px; }
+        .ad ol li{ width:20px; height:20px; line-height:20px; border:1px solid #ccc; text-align:center; background:#fff; float:left; margin-right:10px; cursor:pointer; _display:inline; }
+        .ad ol li.current{ background:yellow; }
+        .ad ul li{ float:left; }
+        .ad ul{ position:absolute; top:0; width:2940px; }
+        .ad ul li.current{ display:block; }
+        #arr{
+            display:none; }
+        #arr span{ width:40px; height:40px; position:absolute; left:5px; top:50%; margin-top:-20px; background:#000; cursor:pointer; line-height:40px; text-align:center; font-weight:bold; font-family:'黑体'; font-size:30px; color:#fff; opacity:0.3; border:1px solid #fff; }
+        #arr #right{ right:5px; left:auto; }
+    </style>
+    <script type="text/javascript" src="../useker.animate.js"></script>
+</head>
+<body>
+<div id="box" class="all">
+    <div class="ad">
+        <ul id="imgs">
+            <li><img src="images/1.jpg"/></li>
+            <li><img src="images/2.jpg"/></li>
+            <li><img src="images/3.jpg"/></li>
+            <li><img src="images/4.jpg"/></li>
+            <li><img src="images/5.jpg"/></li>
+        </ul>
+    </div>
+    <div id="arr"><span id="left"><</span><span id="right">></span></div>
+</div>
+</body>
+</html>
+<script>
+    //1.拿到 oBox 给 oBox绑定鼠标移入 与移出事件
+    var oArr = document.getElementById('arr');
+    var oBox = document.getElementById('box');
+
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+
+    var oimgs = document.getElementById('imgs')
+    //移入 让箭头显示
+    oBox.onmouseover = function(){
+        oArr.style.display = "block";
+    }
+    //移出的时候隐藏oArr
+    oBox.onmouseout = function(){
+        oArr.style.display = "none";
+    }
+
+
+    var imgIndex = 0;
+    oLeft.onclick = function(){
+        imgIndex++;
+        if(imgIndex >= 4){
+            imgIndex = 4;
+        }
+        animate(oimgs, -490 * imgIndex);
+
+    }
+
+    oRight.onclick = function(){
+        imgIndex--;
+        if(imgIndex <= 0){
+            imgIndex = 0;
+        }
+        animate(oimgs, -490 * imgIndex);
+    }
+
+
+</script>
+

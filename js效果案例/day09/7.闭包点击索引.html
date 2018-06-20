@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">我是按钮1</button>
+<button id="btn2">我是按钮2</button>
+<button id="btn3">我是按钮3</button>
+<button id="btn4">我是按钮4</button>
+<button id="btn5">我是按钮5</button>
+<button id="btn6">我是按钮6</button>
+<button id="btn7">我是按钮7</button>
+<button id="btn8">我是按钮8</button>
+<button id="btn9">我是按钮9</button>
+<button id="btn10">我是按钮10</button>
+</body>
+</html>
+
+<script>
+    var btns = document.getElementsByTagName('button');
+
+    for(var i = 0; i < btns.length; i++){
+        btns[i].tmpIndex=i;
+        // i==5
+        btns[i].onclick =fn(i);
+    }
+
+
+    function fn(n){
+
+        return function(){
+              alert(n);
+        }
+    }
+
+
+
+
+
+
+</script>

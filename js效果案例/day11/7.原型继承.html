@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+<script>
+    // 原型继承
+
+    //  第一种继承 对象的冒充  call apply
+    //缺点,不能继承 原型(公有)里的方法与属性
+
+    //  第二种继承 原型继承
+    // 它虽然能继承 公有方法与属性,但是不能继承私有方法与属性
+
+
+    //  第三种继承
+    // 对象冒充+原型继承
+
+// ---人类
+    function Person(_sex){
+        this.sex = _sex;
+    }
+
+    Person.prototype = {
+        constructor : Person,
+        eat : function(str){
+            console.log("我叫做" + this.name + ",我爱吃" + str);
+        }
+    }
+
+//---员工类
+    function Employee(myNmae){
+        this.name=myNmae;
+        Person.call(this,"男")
+    }
+
+    // 原型继承
+    Employee.prototype = new Person();
+
+
+    var e = new Employee("牛王");
+    console.log(e.__proto__);
+    e.eat("aaa")
+
+
+
+</script>

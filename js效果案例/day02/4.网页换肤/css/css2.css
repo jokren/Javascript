@@ -1,0 +1,15 @@
+
+
+div{
+height:200px;
+width:300px;
+border:1px solid green;
+margin: 0 auto;
+background-color:#0094ff;
+}
+
+html,body{
+height:100%;
+width:100%;
+background-color:palegreen;
+}

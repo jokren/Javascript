@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            border:1px solid #d9d9d9;
+            margin:100px auto;
+            position:relative;
+            width:107px;
+        }
+        #x{
+            display:block;
+            border:1px solid #d9d9d9;
+            width:14px;
+            height:14px;
+            float:right;
+            line-height:14px;
+            color:#d6d6d6;
+            cursor:pointer;
+            position:absolute;
+            top:0;
+            left:-15px;
+        }
+
+    </style>
+    <script>
+        window.onload = function(){
+            //1.拿到  X ,给x绑定点击事件
+            var oX = document.getElementById('x');
+
+            oX.onclick = function(){
+                //2.在事件里面从当前的元素往上级找 父元素,
+                //3.找到父元素,隐藏父元素
+                this.parentNode.style.display = "none";
+            }
+        }
+
+        // this ,表示当前的对象,
+        // 在连接里面,指向 谁绑定了事件,this就是谁
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <img src="images/taobao.jpg" alt=""/> <span id="x">×</span>
+</div>
+</body>
+</html>

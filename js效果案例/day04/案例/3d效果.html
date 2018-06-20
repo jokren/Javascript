@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<img id="imgs" src="./images/images4/0.jpg" alt="" ondragstart="return false">
+</body>
+</html>
+
+<script>
+    window.onload = function () {
+        var oImg = document.getElementById('imgs');
+
+        var globalIndex = 0; // 66
+        var tmpIndex = 0;
+        oImg.onmousedown = function (evt) {
+            var e = evt || window.event;
+            var disX = e.offsetX;
+            document.onmousemove = function (evt) {
+                var ee = evt || window.event;
+                var imgIndex = ee.clientX - disX;
+                console.log((77 * 2 - parseInt(imgIndex / 10) + tmpIndex) % 77);
+
+                oImg.src = "./images/images4/" + (77 * 2 - parseInt(imgIndex / 10) + tmpIndex) % 77 + ".jpg";
+
+                globalIndex = (77 * 2 - parseInt(imgIndex / 10) + tmpIndex) % 77;
+            }
+            document.onmouseup = function (evt) {
+                var ee = evt || window.event;
+                document.onmousemove = null;
+                tmpIndex = globalIndex
+            }
+        }
+
+
+        // index的值 是这样的，但是图片是反转；
+        // 75 76 77 0 -1 -2 -3 -4
+        //所以上一排的数字 让 77去减
+        //顺着走应该 这样额排序
+        // 2  1  0 77 76 75 74 73
+
+
+    }
+</script>

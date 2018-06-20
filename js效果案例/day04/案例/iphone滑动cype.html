@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #iphone_box{
+            /*background: url(images/images1/iphone.jpg);*/
+            width:426px;
+            height:640px;
+            margin:10px auto;
+            position:relative;
+            background-color:#0094ff;
+        }
+        #lock_box{
+            width:360px;
+            height:66px;
+            position:absolute;
+            left:34px;
+            top:545px;
+            background:red;
+        }
+        #lock{
+            background:url(images/images1/unlock_btn.jpg);
+            width:93px;
+            height:62px;
+            position:absolute;
+            left:0px;
+            top:0;
+            cursor:pointer;
+        }
+
+    </style>
+    <script>
+
+        /*
+         offsetWidth: 获取元素节点自身的宽度
+         offsetHeight: 获取元素节点自身的高度
+
+         offsetLeft: 和最近的参照物左边界的距离
+         offsetTop: 和最近的参照物上边界的距离
+
+         offsetX: 鼠标位置距离目标元素(鼠标点击的元素)的左边界的距离
+         offsetY: 鼠标位置距离目标元素(鼠标点击的元素)的上边界的距离
+         */
+
+        window.onload = function(){
+
+            var oIphone_box = document.getElementById('iphone_box'); // 屏幕
+            var oLock_box = document.getElementById('lock_box'); // 锁区域
+            var oLock = document.getElementById('lock'); //箭头
+
+            oLock.onmousedown = function(evt){
+                var e = evt || window.event;
+
+                //         var disX=e.clientX-oIphone_box.offsetLeft-oLock_box.offsetLeft-oLock.offsetLeft;
+                //         console.log(disX,e.offsetX);
+
+                var disX = e.offsetX;
+                oLock_box.onmousemove = function(evt){
+                    var e = evt || window.event;
+                    var mX = e.clientX - disX - oIphone_box.offsetLeft - oLock_box.offsetLeft;//移动的位置
+                    var max = oLock_box.offsetWidth - oLock.offsetWidth;//最大活动范围
+                    if(mX <= 0){
+                        oLock.style.left = "0px";
+                    } else if(mX >= max) {
+                        // 红色盒子的宽度-箭头的宽 等于 可以活动范围
+                        oLock.style.left = max + "px";
+                    }else{
+                        oLock.style.left =mX + "px"
+
+                    }
+
+
+                }
+                oLock_box.onmouseup = function(){
+                    oLock_box.onmousemove = oLock_box.onmouseup = null;
+
+                    var  moveX=oLock.offsetLeft;
+
+                    var max = oLock_box.offsetWidth - oLock.offsetWidth;//活动范围
+                    
+                    if(moveX<max/2){
+                        oLock.style.left = 0 + "px";
+                    }else{
+                        oLock.style.left = max + "px";
+                    }
+
+
+                }
+
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+<div id="iphone_box">
+    <div id="lock_box">
+        <div id="lock"></div>
+    </div>
+</div>
+</body>
+</html>

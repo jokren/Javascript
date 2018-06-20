@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:200px;
+            width:200px;
+            border:1px solid #000;
+            /*position:absolute;*/
+        }
+
+        span{
+            height:100px;
+            width:100px;
+            border:1px solid #0094ff;
+            display:block;
+            position:absolute;
+            left:100px;
+            padding:10px;
+            margin:10px;
+        }
+    </style>
+
+</head>
+<body>
+  <div id="box">
+
+         <span id="span"></span>
+  </div>
+
+</body>
+</html>
+<script>
+
+      var oSpan=document.getElementById('span');
+
+      // offsetParent 找带有定位的 父级,所有的父级都没有定位,就找body
+
+      // offsetLeft, offsetTop
+
+      // offsetWidth offsetHeight
+
+//      console.log(oSpan.offsetParent);
+
+//      console.log(oSpan.offsetLeft);
+
+       // offsetWidth =自身的高度+边框+padding   (不包含margin)
+
+      console.log(oSpan.offsetWidth);
+
+
+</script>

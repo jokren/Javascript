@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    // JSON 数据格式
+    //jsonp 实现跨域的一种手段,返回的数据都是 json格式
+
+
+    //    //客户端定义的方法
+    //    function getData(o){
+    //        console.log(o);
+    //    }
+    //
+    //    //它服务器返回的一个值
+    //    getData("周杰伦你好")
+
+
+    function JSONP(url, data, cbName, callback){
+
+
+        //1.随机生成一个函数的名字
+        var rdNmae = "JQ_" + parseInt(Math.random() * 10000);
+
+        window[rdNmae] = callback;
+
+        var strScript = url; // abc({dshdkhfd:sd})
+        strScript += "?" + para(data);
+        strScript += cbName + "=" + rdNmae;
+
+        console.log(strScript);
+
+        var oScr = document.createElement("script");
+        oScr.setAttribute("src", strScript);
+
+        document.body.appendChild(oScr);
+        oScr.onload = function(){
+            this.remove();
+            delete(window[rdNmae]);
+        }
+
+    }
+
+
+    function para(obj){
+        var str = "";
+        for(var key in obj){
+            str += key + "=" + obj[key] + "&&"
+        }
+        return str;
+    }
+
+
+    var url = "https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su"
+
+
+    var url1 = "https://api.douban.com/v2/movie/in_theaters"
+
+
+//    JSONP(url, {wd : "98K"}, "cb", function(res){
+//        console.log(res);
+//
+//    })
+
+var url3="http://api.map.baidu.com/telematics/v3/weather"
+    JSONP(url3,{
+        location:"长沙",
+        output:"json",
+        ak:"H7W5CxI0BPzKtwGcBHmpGPAz50xP1Qjw",
+
+    },"callback",function(res){
+        console.log(res);
+    })
+
+</script>

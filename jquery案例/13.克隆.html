@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+
+<div id="box" onclick="fn()">我是一个盒子
+    <a href="#">我是a标签</a> </div>
+
+
+<span></span>
+
+</body>
+</html>
+
+<script>
+//    var OBox=document.getElementById("box");
+//     var newdiv=OBox.cloneNode(true);
+//    console.log(newdiv);
+
+// clone(false) jq浅克隆就是js的深深克隆
+//clone(true) jq的深克隆不仅仅克隆子节点,还会克隆事件
+
+function fn(){
+    alert(123);
+}
+
+$("div").click(function(){
+    alert("click---div")
+})
+
+
+    $(function(){
+
+       var $clone=$("#box").clone(true);
+
+
+       $("span").html($clone)
+
+
+    })
+</script>

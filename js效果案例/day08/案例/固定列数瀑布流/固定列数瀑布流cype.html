@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        body {
+            width: 1600px;
+        }
+
+        .item {
+            padding-left: 5px;
+            padding-right: 5px;
+            float: left;
+        }
+
+        img {
+            width: 180px;
+            padding: 3px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script>
+
+
+    </script>
+</head>
+<body>
+<!--
+(div[class=item]>img[src='images/images1/img($).jpg'])*20
+-->
+<!--<div class="item"><img src="images/images1/img (1).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (2).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (3).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (4).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (5).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (6).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (7).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (8).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (9).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (10).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (11).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (12).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (13).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (14).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (15).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (16).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (17).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (18).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (19).jpg" alt=""></div>-->
+<!--<div class="item"><img src="images/images1/img (20).jpg" alt=""></div>-->
+
+</body>
+</html>
+
+<script>
+    //不能写到 window里面，为什么？因为图片属于外部资源，
+    // 有一个加载的过程，图片还没加载完成，就没有高度
+    for (var i = 0; i < 20; i++) {
+        var oDiv = document.createElement("div");
+        oDiv.innerHTML = "<img src='images/images1/img (" + (i + 1) + ").jpg' alt=''>";
+        oDiv.style.position = "static";
+        oDiv.className = "item";
+
+        document.body.appendChild(oDiv);
+
+    }
+
+    window.onload = function () {
+
+        //开始实现瀑布流
+
+        var oItem = document.getElementsByClassName("item");
+        var arr = [];
+        for (var i = 0; i < oItem.length; i++) {
+            if (i < 3) {
+
+                arr.push(oItem[i].offsetHeight);//把前面3个的高度添加到数组
+
+                console.log(arr);
+            } else {
+                // 需要从数组中找到最 矮的那高度
+                var minIndex = getMinIndex(arr);//找到最小的索引
+
+                oItem[i].style.position = "absolute";//加定位
+                oItem[i].style.top = arr[minIndex] + "px";  //top的位置
+                oItem[i].style.left = oItem[i].offsetWidth * minIndex + "px";
+                //把最矮高度，改变
+                arr[minIndex] = arr[minIndex] + oItem[i].offsetHeight;
+            }
+        }
+
+    }
+    //找最矮高度的啊函数
+    function getMinIndex(tempArr) {
+        var minIndex = 0;
+        var minArr = tempArr[0];//加上最小的是 第一个
+        for (var i = 0; i < tempArr.length; i++) {
+            if (tempArr[i] < minArr) {
+                minArr = tempArr[i];
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
+    }
+
+
+</script>

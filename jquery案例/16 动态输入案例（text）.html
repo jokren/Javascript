@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        @keyframes blink{
+            0%,
+            100%{
+                opacity:1
+            }
+            50%{
+                opacity:0
+            }
+        }
+        @-webkit-keyframes blink{
+            0%,
+            100%{
+                opacity:1
+            }
+            50%{
+                opacity:0
+            }
+        }
+        @-moz-keyframes blink{
+            0%,
+            100%{
+                opacity:1
+            }
+            50%{
+                opacity:0
+            }
+        }
+        .wrap{
+            width:1000px;
+            text-align:center;
+            margin:100px auto 0;
+        }
+        .wrap h1{
+            font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight:300;
+        }
+        .word{
+            font-weight:700;
+        }
+        .typed-cursor{
+            opacity:1;
+            -webkit-animation:blink .7s infinite;
+            -moz-animation:blink .7s infinite;
+            animation:blink .7s infinite;
+            display:none;
+        }
+        .saySection{
+            margin-top:50px;
+        }
+        .saySection input{
+            font-size:30px;
+        }
+        .saySection .txtSay{
+            padding-left:10px;
+        }
+        .saySection .btnSay{
+            display:inline-block;
+            padding:0 20px;
+            cursor:pointer;
+        }
+    </style>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script>
+
+        var timer = 0;
+
+        var flag = true;
+        $(function(){
+
+
+            $("#btnSay").click(function(){
+
+                if(flag && $("#inValue").val() != ""){
+                    flag = false;
+                    //                    $(this).attr("disabled","disabled");
+
+                    $(this).prop("disabled", true);
+
+                    $(".word").text("");
+                    clearInterval(timer);
+                    var str = $("#inValue").val(); // 122434
+
+                    $(".typed-cursor").show();
+
+
+                    var arr = str.split('');
+                    var num = 0;
+                    timer = setInterval(function(){
+                        $(".word").text($(".word").text() + arr[num])
+                        num++;
+                        if(num == arr.length){
+                            clearInterval(timer);
+                            flag = true;
+                            $(this).prop("disabled", false);
+                            $(".typed-cursor").hide();
+                        }
+                    }.bind(this), 100)
+
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <h1>
+        You want to say ： <span class="word"></span><span class="typed-cursor">|</span> ！
+    </h1>
+    <div class="saySection">
+        <input type="text" id="inValue" class="txtSay"/> <input type="button" value="Say" id="btnSay" class="btnSay"/>
+    </div>
+</div>
+</body>
+
+</html>

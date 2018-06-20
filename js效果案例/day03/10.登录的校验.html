@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form id="myform" method="post">
+    <p>
+        <label for="uname"> 用户名: <input type="text" name="userName" id="uname"> </label>
+    </p>
+
+    <p>
+        <label for="upwd"> 密&nbsp;&nbsp;码 : <input type="password" name="userPwd" id="upwd"> </label>
+    </p>
+
+    <p>
+        <button id="btn_login" type="submit">登录</button>
+    </p>
+
+</form>
+</body>
+</html>
+
+<script>
+    var oForm = document.getElementById('myform');
+    var userFlag = false;//默认为用户名是错误的, 提交的时候去判断
+    var pwdFlag = false;//
+
+    //当鼠标失去焦点时
+    oForm.userName.onblur = function(){
+
+        //当鼠标失去焦点时: 检测用户名长度至少6位, 且只能为数字和字母
+        // trim() 去掉前后的空格
+
+        var flag = true;
+
+        if(this.value.trim().length >= 6){
+
+            var str = this.value.trim();
+            for(var i = 0; i < str.length; i++){
+
+                if(!(str[i] >= "0" && str[i] <= "9" || str[i].toLowerCase() >= "a" && str[i].toLowerCase() <= "z")){
+                    // 如果条件不满足进来
+                    flag = false;
+                    break;
+                }
+
+            }
+
+            userFlag = flag;
+
+
+        }
+
+
+    }
+
+    // 检测密码长度至少8位 
+
+    oForm.userPwd.onblur = function(){
+
+        if(this.value.trim().length >= 8){
+            pwdFlag = true;
+        }
+
+
+    }
+    oForm.onsubmit = function(){
+        // 用户名与密码的格式都对了
+        if(userFlag && pwdFlag){
+
+           // alert("正在提交中...");
+            return true;
+        } else {
+            alert("用户名或密码不合法");
+            return false;
+        }
+
+
+    }
+
+
+</script>

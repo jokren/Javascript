@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:yellow;
+            position:absolute;
+        }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<button>走你</button>
+<button>stop</button>
+<div></div>
+
+</body>
+</html>
+<script>
+
+    /*
+    * stop(参数1,参数2)默认参数是fasle
+    *
+    * 参数1: 清除动画队列
+    * 参数2: 快速完成当前执行的动画
+    *
+    * */
+    $(function(){
+
+       $("button:eq(0)").click(function(){
+           $("div").animate({"left":"300"},3000)
+               .animate({"top":300},3000)
+               .animate({"left":8,"height":300,"width":300,"background":"red"},2000)
+
+       })
+
+
+        $("button:last").click(function(){
+
+            $("div").stop(true,true);
+        })
+
+
+    })
+
+</script>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:yellowgreen;
+            position:absolute;
+        }
+    </style>
+    <!--<script src="useker.animate.js"></script>-->
+    <script src="useker.animate2.js"></script>
+</head>
+<body>
+<button id="btn">change</button>
+<div id="box"></div>
+</body>
+</html>
+
+<script>
+
+    var oBtn = document.getElementById('btn');
+
+    var oBox = document.getElementById('box');
+    oBtn.onclick = function(){
+        //同时改变宽与高
+        animate(oBox, {"height":888,"width":400,"opacity":0.5});
+    }
+
+
+//    var json = {
+//        "height" : 400,
+//        "width":400
+//    }
+//
+//
+//    for (var key in json) {
+//
+//        console.log(key, json[key]);
+//    }
+
+
+</script>

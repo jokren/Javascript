@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{ margin:0; padding:0; }
+        ul{ list-style:none; }
+        img{
+            vertical-align:top; /*除去 图片底部有3像素空白缝隙的问题 */
+        }
+        .box{
+            width:490px;
+            height:170px;
+            margin:100px auto;
+            border:1px solid #ccc;
+            padding:5px;
+        }
+        .inner{
+            width:490px;
+            height:170px;
+            background-color:pink;
+            position:relative;
+            overflow:hidden;
+        }
+        .inner ul{
+            width:1000%;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        .inner ul li{
+            float:left;
+        }
+        .square{
+            position:absolute;
+            right:10px;
+            bottom:10px;
+        }
+        .square span{
+            display:inline-block;
+            width:16px;
+            height:16px;
+            border:1px solid #ccc;
+            background-color:#fff;
+            text-align:center;
+            line-height:16px;
+            margin:0 3px;
+            cursor:pointer;
+        }
+        .square span.current{
+            background-color:darkorange;
+            color:white;
+        }
+    </style>
+    <script src="../useker.animate.js"></script>
+</head>
+<body>
+<div class="box" id="box">
+    <div class="inner">
+        <ul>
+            <li>
+                <a href="#"><img src="images/01.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/02.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/03.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/04.jpg" alt=""/></a>
+            </li>
+            <li>
+                <a href="#"><img src="images/05.jpg" alt=""/></a>
+            </li>
+        </ul>
+        <div class="square">
+            <span class="current">1</span> <span>2</span> <span>3</span> <span>4</span> <span>5</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+
+    var oBox = document.getElementById('box');
+    var oSpans = oBox.children[0].children[1].children;//所有的span
+
+    var oUl = oBox.children[0].children[0];// ul 移动的元素
+
+
+    //1.给每一个span绑定鼠标移入事件
+
+    for(var [k, v] of Object.entries(oSpans)){
+        //        console.log(k,v);
+        v.tmpIndex = k;
+        v.onclick = function(){
+            //span的黄点
+            //点击之后,让所有的span变白
+
+            //排他思想
+            for(var i = 0; i < oSpans.length; i++){
+                oSpans[i].className = "";
+            }
+            //给当前的span变黄
+            this.className = "current"
+
+
+            animate(oUl,-490*this.tmpIndex)
+
+
+        }
+    }
+
+
+</script>

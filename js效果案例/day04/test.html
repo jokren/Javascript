@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .box{ position:relative; }
+        .box div{ margin:2px; width:60px; height:60px; position:absolute; background-color:#0094ff }
+    </style>
+</head>
+<body>
+<div class="box" id="box"></div>
+</body>
+</html>
+<script>
+
+    var arr = ["red", "yellow", "blue", "green"];
+    var div = document.getElementById('box');
+
+    var strHTML = "";
+    for(var i = 0; i < 100; i++){
+        strHTML+="<div style='left:"+(i%10)*60+"px;top:"+ Math.floor(i/10)*60+"px'>"+ (i+1) +"</div>"
+    }
+    div.innerHTML=strHTML;
+
+
+
+    This
+
+
+</script>

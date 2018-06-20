@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:#0094ff;
+            position:absolute;
+            z-index:1;
+        }
+        span{
+            height:200px;
+            width:200px;
+            position:absolute;
+            background-color:yellow;
+            display:block;
+            left:50px;
+            top:60px;
+        }
+        button{
+            position:absolute;
+            z-index:999;
+        }
+    </style>
+    <script src="../../useker.animate3.js"></script>
+</head>
+<body>
+<button id="btn">
+    div交换位置
+</button>
+
+<div id="box"></div>
+
+<span></span>
+
+</body>
+</html>
+
+<script>
+    var btn = document.getElementById('btn');
+
+    var oBox = document.getElementById('box');
+    var ospan = document.querySelector('span')
+
+    btn.onclick = function(){
+
+        animate(ospan, {
+            height : 100,
+            width : 100,
+            zIndex : 1,
+            left:8,
+            top:8
+        }, function(){
+
+            animate(oBox, {
+                height : 200,
+                width : 200,
+                left : 50,
+                top : 60
+            })
+
+
+        })
+
+    }
+</script>

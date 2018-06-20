@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<ul>
+    <li>我是第1个</li>
+    <li>我是第2个</li>
+    <li>我是第3个</li>
+    <li id="li4">我是第4个</li>
+    <li>我是第5个</li>
+
+</ul>
+</body>
+</html>
+<script>
+
+    // before 插在指定元素的 前面
+    // after 插在指定元素的 后面
+
+    $(function(){
+
+       var $div=$("<div>我是div</div>");
+
+
+//       $("#li4").before($div);
+
+        $("#li4").after($div);
+
+    })
+
+</script>

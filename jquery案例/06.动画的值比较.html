@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            margin:3px;
+            position:absolute;
+        }
+
+        div:nth-of-type(1){
+            background-color:black;
+        }
+        div:nth-of-type(2){
+            background-color:red;
+            top:150px;
+        }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<button>开始跑</button>
+<div>11</div>
+<div>22</div>
+</body>
+</html>
+<script>
+    $(function(){
+        $("button").click(function(){
+            $("div:eq(0)").animate({"left":800},1000,"linear")
+            $("div:eq(1)").animate({"left":800},1000,"swing")
+
+        })
+    })
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:40px;
+            width:200px;
+            border:1px solid #000;
+        }
+        span{
+            display:block;
+            height:40px;
+            width:0px;
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+
+<p>进度条</p>
+
+<div>
+    <span id="box"></span>
+</div>
+<strong id="txt">0%</strong>
+</body>
+</html>
+<script>
+
+    var oBox = document.getElementById('box');
+    var oTxt = document.getElementById('txt');
+
+    //定时器
+
+    var num = 0;
+    var timer = setInterval(function(){
+        num++;
+        oBox.style.width = num + "px";
+        if(num >= 200){
+            clearInterval(timer);
+        }
+        oTxt.innerText = parseInt(num / 200 * 100) + "%";
+
+    }, 20);
+
+
+</script>

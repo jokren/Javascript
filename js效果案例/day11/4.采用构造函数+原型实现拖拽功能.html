@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:150px;
+            width:150px;
+            background-color:#f66;
+            position:absolute;
+        }
+        div:nth-child(1){
+            background-color:yellowgreen;
+            left:300px;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+
+</body>
+</html>
+
+<script>
+    function DrogBox(){
+        this.ele = null;
+    }
+
+    DrogBox.prototype.init = function(id){
+        this.ele = document.getElementById(id);
+        return this;
+    }
+
+
+    DrogBox.prototype = {
+        constructor : DrogBox,
+        moveStart : function(){
+            var self = this;
+            this.ele.onmousedown = function(evt){
+                var e = evt || window.event;
+                var disX = e.offsetX;
+                var disY = e.offsetY;
+
+                //开始移动
+                self.moveIng(disX, disY);
+                self.moveEnd();
+            }
+
+
+        },
+        moveIng : function(disx, disy){
+            var self = this;
+            document.onmousemove = function(evt){
+                var e = evt || window.event;
+                self.ele.style.left = e.clientX - disx + "px";
+                self.ele.style.top = e.clientY - disy + "px";
+            }
+        },
+        //松开
+        moveEnd : function(){
+            document.onmouseup = function(){
+                document.onmousemove = document.onmouseup = null;
+            }
+
+        }
+
+
+    };
+
+
+    // 使用2个数的
+    // 加减乘除 (4个方法)
+    //使用面向对象来写
+    function MyNumber(num1, num2){
+        this.num1 = num1;
+        this.num2 = num2;
+    }
+
+    MyNumber.prototype.sum = function(){
+
+    }
+
+</script>

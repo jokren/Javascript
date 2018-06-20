@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{ height:300px;
+            width:300px;
+            background-color:#000000;
+
+            transition:all 1s;
+        }
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+<input  id="fadeIn" type="button" value="淡入" >
+<input type="button" id="fadeOut"  value="淡出">
+
+<input type="button" id="fadeTo"  value="淡出什么程度">
+<input type="button" id="fadeToggle"  value="淡入淡出的切换">
+<div></div>
+</body>
+</html>
+
+<script>
+    $(function(){
+
+        $("#fadeIn").click(function(){
+            $("div").fadeIn(1000,1);
+        })
+
+
+        $("#fadeOut").click(function(){
+            $("div").fadeOut(1000);
+        })
+
+        $("#fadeTo").click(function(){
+            $("div").fadeTo(1000,.5,"linear")
+        })
+
+        $("#fadeToggle").click(function(){
+            $("div").fadeToggle(1000)
+        })
+
+
+    })
+</script>

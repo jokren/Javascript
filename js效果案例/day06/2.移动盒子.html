@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:#0094ff;
+            position:absolute;
+        }
+        /**{*/
+        /*margin:0;*/
+        /*padding:0;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<button id="btn_200">200</button>
+<button id="btn_400">400</button>
+
+
+<div id="box"></div>
+</body>
+</html>
+
+<script>
+
+    var oBtn200 = document.getElementById('btn_200');
+    var oBtn400 = document.getElementById('btn_400');
+    var oBox = document.getElementById('box');
+
+    // 400
+    //     点击按钮,让盒子跑到400的位置
+
+    oBtn400.onclick = function(){
+        //数组 匀速动画  公式: 新位置=当前的位置+步长
+        // 设置值 使用 style.left
+        // 获取 用 offsetLeft
+
+        //
+        //        var timer = setInterval(function(){
+        //            // 新的位置     =  当前的位置    +  步长
+        //            oBox.style.left = oBox.offsetLeft + 10 + "px";
+        //            //如果大于了400 就让定时器停下来
+        //            if(oBox.offsetLeft >= 400){
+        //                clearInterval(timer);
+        //                oBox.style.left = "400px";
+        //            }
+        //        }, 40)
+
+
+        animate(oBox, 400);
+
+    }
+
+    //到200
+    oBtn200.onclick = function(){
+        //        var timer = setInterval(function(){
+        //            // 新的位置=当前的位置+步长
+        //            oBox.style.left = oBox.offsetLeft + 10 + "px";
+        //            //走一步,判断一次,都一次,判一次
+        //            if(Math.abs(oBox.offsetLeft - 200) <= 10){
+        //                clearInterval(timer);
+        //                oBox.style.left="200px";
+        //            }
+        //
+        //        }, 40)
+
+        animate(oBox, 200);
+
+    }
+
+
+    //obj 元素对象 div
+    //target 目标 到200,400 800...
+    function animate(obj, target){
+        clearInterval(obj.timer);// 清除之前的定时
+        //1. 先判断 是 +10 还是 -10
+        // 如果当前的位置 400 ,而目标200,  390 380  -10 否则就 +10
+        steps = obj.offsetLeft > target ? -10 : 10;
+        //保证 自己只有一个定时器
+        obj.timer = setInterval(function(){
+            // 公式
+            obj.style.left = obj.offsetLeft + steps + "px";
+
+            if(Math.abs(obj.offsetLeft - target) <= Math.abs(steps)){
+                // 情况定时器,并且 如果到不了岸,我送你上岸
+                clearInterval(obj.timer); //清除自己的 定时器
+                obj.style.left = target + "px";
+            }
+        }, 40)
+
+    }
+
+
+
+
+</script>

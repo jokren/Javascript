@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            height:300px;
+            width:300px;
+            border:1px solid #000;
+        }
+        #box > .left{
+            width:150px;
+            height:100%;
+            background-color:#0094ff;
+            float:left;
+        }
+        #box > .right{
+            width:150px;
+            height:100%;
+            background-color:yellow;
+            float:left;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <div class="left"></div>
+    <div class="right"></div>
+
+</div>
+
+</body>
+</html>
+<script>
+    var oBox = document.getElementById('box');
+    oBox.onclick = function(evt){
+        var e = evt || window.event;
+        var divs = oBox.children;
+        for(var i = 0; i < divs.length; i++){
+            if(divs[i].className == e.target.className){
+                divs[i].style.backgroundColor = "green";
+            } else {
+                divs[i].style.backgroundColor = "#fff";
+            }
+        }
+
+
+    }
+
+</script>

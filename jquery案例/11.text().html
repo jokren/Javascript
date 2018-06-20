@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<ul>
+    <li>我是第1个</li>
+    <li>我是第2个</li>
+    <li>我是第3个</li>
+    <li id="li4">我是第4个
+
+    </li>
+    <li>我是第5个</li>
+
+</ul>
+</body>
+</html>
+<script>
+
+    // html() 会获取 文本节点与html元素
+    //text() 值获取文本
+    $(function(){
+
+        console.log($("#li4").text("你好 <a href=\"#\"></a> "));
+
+
+    })
+
+
+
+</script>

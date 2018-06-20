@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style-type:none;
+        }
+        .box{
+            width:400px;
+            height:300px;
+            border:1px solid #ccc;
+            margin:100px auto;
+            overflow:hidden;
+        }
+        .hd{
+            height:45px;
+        }
+        .hd span{
+            display:inline-block;
+            width:90px;
+            background-color:pink;
+            line-height:45px;
+            text-align:center;
+        }
+        .hd span.current{
+            background-color:purple;
+        }
+        .bd li{
+            height:255px;
+            background-color:purple;
+            display:none;
+        }
+        .bd li.current{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="hd">
+        <span class="current">体育</span> <span>娱乐</span> <span>新闻</span> <span>综合</span>
+    </div>
+    <div class="bd">
+        <ul>
+            <li class="current">我是体育模块</li>
+            <li>我是娱乐模块</li>
+            <li>我是新闻模块</li>
+            <li>我是综合模块</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var oSpan = document.getElementsByTagName('span');
+    var oLi = document.getElementsByTagName('li');
+
+
+    for(var i = 0; i < oSpan.length; i++){
+        oSpan[i].onclick = show(i);
+    }
+
+    function show(num){
+
+        return function(){
+            //排他
+            for(var j = 0; j < oSpan.length; j++){
+                oSpan[j].className = "";
+                oLi[j].className = "";
+            }
+            oSpan[num].className = "current"
+            oLi[num].className = "current";
+
+
+        }
+    }
+
+
+    //    for(var i = 0; i < oSpan.length; i++){
+    //
+    //        oSpan[i].index = i;
+    //        oSpan[i].onclick = function(){
+    //            //排他思想
+    //            for(var j = 0; j < oSpan.length; j++){
+    //                oSpan[j].className = "";
+    //                oLi[j].className = "";
+    //            }
+    //            this.className = "current";
+    //
+    //            oLi[this.index].className = "current";
+    //        }
+    //    }
+
+
+
+
+</script>

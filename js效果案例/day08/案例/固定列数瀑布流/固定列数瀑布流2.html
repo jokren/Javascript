@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            border:none;
+        }
+        body{
+            width:100%;
+        }
+        .item{
+            padding-left:5px;
+            padding-right:5px;
+            float:left;
+        }
+        img{
+            width:180px;
+            padding:3px;
+            border:1px solid #ccc;
+        }
+    </style>
+    <script>
+
+        // 带有 DTD 就使用document.documentElement
+        //  没有DTD document.body
+        //1. 加载图片
+
+        var arr = [];
+
+        var minIndex = 0;//默认最小的下标是 0
+        var minHeight = 0;//最小的值 最小的 高度
+        window.onload = function(){
+            for(var i = 0; i < 42; i++){
+
+                var div = document.createElement("div");
+                div.className = "item";
+                div.position = "static";
+                div.innerHTML = "<img src='images/images1/img (" + (i + 1) + ").jpg'/>";
+                document.body.appendChild(div);
+
+            }
+
+            //1拿到页面上有的div
+            var divs = document.getElementsByTagName('div');
+            for(var i = 0; i < divs.length; i++){
+                if(i < 4){
+                    arr.push(divs[i].offsetHeight);
+                } else {
+                    minIndex = getMin(arr);
+
+                    var w = minIndex * divs[i].offsetWidth;
+                    var h = arr[minIndex];
+
+                    divs[i].style.position = "absolute";
+                    divs[i].style.left = w + "px";
+                    divs[i].style.top = h + "px";
+                    //修改数组的值
+                    arr[minIndex] = arr[minIndex] + divs[i].offsetHeight;
+                }
+            }
+        }
+
+        function getMin(tmpArr){
+            var mIndex = 0;
+            var minVal = tmpArr[0];
+
+            for(var i = 0; i < tmpArr.length; i++){
+                if(minVal > tmpArr[i]){
+                    minVal = tmpArr[i];
+                    mIndex = i;
+                }
+            }
+            return mIndex;
+        }
+
+
+    </script>
+</head>
+<body>
+<!--<div class="item"> <img src="images/images1/img (1).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (2).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (3).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (4).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (5).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (6).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (7).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (8).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (9).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (10).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (11).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (12).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (13).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (14).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (15).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (16).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (17).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (18).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (19).jpg" /> </div>-->
+<!--<div class="item"> <img src="images/images1/img (20).jpg" /> </div>-->
+</body>
+</html>

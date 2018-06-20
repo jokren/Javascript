@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            height:100px;
+            width:100px;
+            background-color:#999999;
+        }
+        .cls{
+            height:200px;
+            width:200px;
+            background-color:deeppink;
+        }
+
+    </style>
+    <script src="jquery-3.3.1.js"></script>
+</head>
+<body>
+
+<input type="button" value="切换">
+<div></div>
+</body>
+</html>
+<script>
+    /*
+    * 1. addClass  类样式添加
+    * 2. removeClass() 类样式移除,如果没有参数,表示删除所有的类样式
+    * 3. hasClass() 判断指定的类 是否存在
+    * 4. toggleClass()  切换指定类样式
+    *
+    *
+    * */
+
+    $(function(){
+
+        $("input[type=button]").click(function(){
+
+//            if($("div").hasClass("cls")){
+//                $("div").removeClass("cls");
+//            } else {
+//                $("div").addClass("cls");
+//            }
+
+
+
+//            $("div").toggleClass("cls");
+        })
+
+
+    })
+</script>

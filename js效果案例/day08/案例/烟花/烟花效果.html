@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Useker.tools.js"></script>
+    <style>
+        div{
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+
+
+    var angle = 20;//角度
+    var r = 100;
+    for(var i = 0; i < 18; i++){
+        var tempAngle = angle * i; //角度
+
+        var div = document.createElement("div");
+        var color = randomColor();
+        div.style.backgroundColor = color;
+        div.style.height = "10px";
+        div.style.width = "10px";
+        div.style.borderRadius = "2px";
+
+        var X = r * Math.cos(tempAngle * Math.PI / 180);
+        var Y = r * Math.sin(tempAngle * Math.PI / 180);
+
+        document.body.appendChild(div);
+
+        animate(div, {left : 300 + X, top : 300 + Y}, function(obj){
+            obj.remove();
+        })
+
+    }
+
+    function randomColor(){
+
+        return "RGB(" + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + "," + parseInt(Math.random() * 256) + ")"
+    }
+
+</script>
+
+
+</body>
+</html>
